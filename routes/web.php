@@ -20,10 +20,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/vehicles','VehicleController');
+Route::resource('/vehicles', 'VehicleController');
 
-Route::resource('/customers','CustomerController');
+Route::resource('/customers', 'CustomerController');
 
-Route::resource('/jobs','JobController');
+Route::resource('/jobs', 'JobController');
 
-Route::get('/admin','HomeController@adminIndex')->name('admin');
+Route::get('/admin', 'HomeController@adminIndex')->name('admin');

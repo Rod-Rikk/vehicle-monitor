@@ -18,6 +18,7 @@ class CreateVehiclesTable extends Migration
             $table->string('num_plate')->unique();
             $table->text('description');
             $table->string('cha_num');
+            $table->string('model');
             $table->string('code')->unique();
             $table->timestamps();
         });

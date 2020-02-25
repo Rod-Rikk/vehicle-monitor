@@ -15,12 +15,12 @@ class VehicleController extends Controller
     public function index()
     {
         //
-        $vehicles = Vehicle::latest()->get();
-        
+        // $vehicles = Vehicle::latest()->get();
+        $vehicles = Vehicle::all();
+
         // return view('vehicles.vehicles',compact('vehicles'));
 
-        return view('admin.vehicles',compact('vehicles'));
-
+        return view('admin.vehicles', compact('vehicles'));
     }
 
     /**
@@ -42,6 +42,43 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
         //
+
+        $validatedData = $request->validate([
+            'num_plate' => ['required', 'min:4'],
+            'description' => ['required', 'min:5'],
+            'cha_num' => ['required'],
+            'model' => [],
+            'code' => ['required']
+        ]);
+
+        // $num_plate = $request['num_plate'];
+        // $description = $request['description'];
+        // $cha_num = $request['cha_num'];
+        // $model = $request['model'];
+        // $code = $request['code'];
+
+        $data = new Vehicle();
+        // $data->num_plate = $num_plate;
+
+        // $data->description = $description;
+
+        // $data->cha_num = $cha_num;
+
+        // $data->model = $model;
+
+        // $data->code = $code;
+
+        // $data->save();
+
+
+        $data->num_plate = $validatedData['num_plate'];
+        $data->description = $validatedData['description'];
+        $data->cha_num = $validatedData['cha_num'];
+        $data->model = $validatedData['model'];
+        $data->code = $validatedData['code'];
+        $data->save();
+
+        return redirect('/vehicles');
     }
 
     /**
@@ -88,4 +125,6 @@ class VehicleController extends Controller
     {
         //
     }
+
+   
 }
