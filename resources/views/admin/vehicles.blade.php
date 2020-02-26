@@ -26,28 +26,24 @@
                 <li class="breadcrumb-item active" aria-current="page">
                     <span></span>
                     <button type="button" class="btn btn-gradient-primary btn-md" data-toggle="modal"
-                        data-target="#exampleModalCenter"><i
+                        data-target="#createModal"><i
                             class="mdi mdi-database-plus icon-sm text-white align-middle mdi-24px"></i> </button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
 
-
-
-                            {{-- Create vehicle form --}}
-                            <form class="user" method="POST" action="/vehicles">
-                                {{ csrf_field() }}
-
+                    <form method="POST" action="/vehicles">
+                        {{ csrf_field() }}
+                        <!-- Modal to create a vehicle-->
+                        <div class="modal fade" id="createModal" tabindex="-1" role="dialog"
+                            aria-labelledby="createModalTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalCenterTitle">Persist data</h5>
+                                        <h5 class="modal-title" id="createModalLongTitle">Add an entry</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body" style="width:200%">
-                                        <div class="col-md-6 grid-margin stretch-card">
+                                    <div class="modal-body">
+                                        <div class="col-md-12 grid-margin stretch-card">
                                             <div class="card">
                                                 <div class="card-body">
                                                     <h4 class="card-title">Entry</h4>
@@ -65,8 +61,7 @@
                                                         <textarea class="form-control"
                                                             {{ $errors->has('description') ? 'alert-danger' : '' }}
                                                             name="description" rows="4" value="{{ old('num_plate') }}"
-                                                            required>
-                                                            </textarea>
+                                                            required></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="chassisNumber">Chassis Number</label>
@@ -95,33 +90,22 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <div>
+                                            <button type="submit" class="btn btn-primary btn-user btn-cancel">
+                                                Submit
+                                                <i style="margin-left=" 50px" class="mdi mdi-renew  "></i>
+                                            </button>
+
+                                        </div>
                                     </div>
                                 </div>
-
-                                {{-- errors block --}}
-                                @if ($errors->any())
-                                <div class="col-md-6">
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                @endif
-                            </form>
+                            </div>
                         </div>
-
-                    </div>
-
+                    </form>
 
                 </li>
             </ul>
@@ -147,6 +131,7 @@
                             <th> Chassis No. </th>
                             <th> Model </th>
                             <th> Code </th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -158,10 +143,10 @@
                             <td>{{ $vehicle->model }}</td>
                             <td>{{ $vehicle->code }}</td>
                             <td><a href="/vehicles/{{$vehicle->id}}/edit" class="btn btn-user btn-cancel"><i
-                                        class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
+                                        class="mdi mdi-tooltip-edit text-warning mdi-24px">Edit</i></a>
                                 </button></td>
                             <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal"><i
-                                        class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
+                                        class="mdi mdi-delete-variant text-danger mdi-24px">Delete</i></a>
                                 </button></td>
                             <form method="POST" action="/vehicles/ {{ $vehicle->id }}">
                                 {{ method_field('DELETE') }}
