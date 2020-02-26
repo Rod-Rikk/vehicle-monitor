@@ -14,7 +14,7 @@
     <!--     Fonts and icons     -->
     {{-- <script src="https://kit.fontawesome.com/6116065486.js" crossorigin="anonymous"></script> --}}
     <!-- CSS Files -->
-    <link href="{{ asset ('css/bootstrap.min.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ asset ('css/bootstrap.min.css') }}" rel="stylesheet" /> --}}
     {{-- <link href="{{ asset ('css/light-bootstrap-dashboard.css?v=2.0.0') }}" rel="stylesheet" /> --}}
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

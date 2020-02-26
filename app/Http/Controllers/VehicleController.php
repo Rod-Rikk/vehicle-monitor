@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Vehicle;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Session;
 
 class VehicleController extends Controller
 {
@@ -15,10 +16,8 @@ class VehicleController extends Controller
     public function index()
     {
         //
-        // $vehicles = Vehicle::latest()->get();
-        $vehicles = Vehicle::all();
+        $vehicles = Vehicle::latest()->get();
 
-        // return view('vehicles.vehicles',compact('vehicles'));
 
         return view('admin.vehicles', compact('vehicles'));
     }
@@ -43,7 +42,7 @@ class VehicleController extends Controller
     {
         //
 
-        $validatedData = $request->validate([
+        $validatedData = request()->validate([
             'num_plate' => ['required', 'min:4'],
             'description' => ['required', 'min:5'],
             'cha_num' => ['required'],
@@ -51,32 +50,14 @@ class VehicleController extends Controller
             'code' => ['required']
         ]);
 
-        // $num_plate = $request['num_plate'];
-        // $description = $request['description'];
-        // $cha_num = $request['cha_num'];
-        // $model = $request['model'];
-        // $code = $request['code'];
+        Vehicle::create($validatedData);
 
-        $data = new Vehicle();
-        // $data->num_plate = $num_plate;
-
-        // $data->description = $description;
-
-        // $data->cha_num = $cha_num;
-
-        // $data->model = $model;
-
-        // $data->code = $code;
-
+        // $data->num_plate = $validatedData['num_plate'];
+        // $data->description = $validatedData['description'];
+        // $data->cha_num = $validatedData['cha_num'];
+        // $data->model = $validatedData['model'];
+        // $data->code = $validatedData['code'];
         // $data->save();
-
-
-        $data->num_plate = $validatedData['num_plate'];
-        $data->description = $validatedData['description'];
-        $data->cha_num = $validatedData['cha_num'];
-        $data->model = $validatedData['model'];
-        $data->code = $validatedData['code'];
-        $data->save();
 
         return redirect('/vehicles');
     }
@@ -98,9 +79,13 @@ class VehicleController extends Controller
      * @param  \App\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vehicle $vehicle)
+    public function edit($id)
     {
         //
+        $vehicle = Vehicle::find($id);
+
+
+        return view('admin.edit-vehicle', compact('vehicle'));
     }
 
     /**
@@ -113,6 +98,25 @@ class VehicleController extends Controller
     public function update(Request $request, Vehicle $vehicle)
     {
         //
+        $validatedData = request()->validate([
+            'num_plate' => ['required', 'min:4'],
+            'description' => ['required', 'min:5'],
+            'cha_num' => ['required'],
+            'model' => [],
+            'code' => ['required']
+        ]);
+
+        $vehicle->num_plate = $validatedData['num_plate'];
+        $vehicle->description = $validatedData['description'];
+        $vehicle->cha_num = $validatedData['cha_num'];
+        $vehicle->model = $validatedData['model'];
+        $vehicle->code = $validatedData['code'];
+
+        $vehicle->save();
+
+        $message = session()->flash('success', 'Record successfully updated');
+
+        return redirect('/vehicles');
     }
 
     /**
@@ -124,7 +128,8 @@ class VehicleController extends Controller
     public function destroy(Vehicle $vehicle)
     {
         //
-    }
+        $vehicle->delete();
 
-   
+        return redirect('/vehicles');
+    }
 }
