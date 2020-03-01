@@ -26,6 +26,8 @@
             <ul class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
                     <span></span>
+                    <button type="button" class="btn btn-gradient-primary btn-md"><i
+                            class="mdi mdi-keyboard-return icon-sm text-white align-middle mdi-24px"> <a href="/customers"></a></i> </button>
 
                 </li>
             </ul>
@@ -36,6 +38,7 @@
         <div class="card">
             <div class="card">
                 <div class="card-body">
+
                     @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -45,52 +48,48 @@
                         </ul>
                     </div>
                     @endif
+
                     <h4 class="card-title">Entry</h4>
-                    <p class="card-description"> Update vehicle</p>
-                    <form class="user-form" method="POST" action="/vehicles/{{$vehicle->id}}">
+                    <p class="card-description"> Update customer</p>
+                    <form class="user-form" method="POST" action="/customers/{{$customer->id}}">
                         {{method_field('PATCH')}}
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="numberPlate">Number plate</label>
-                            <input type="text" class="form-control" name="num_plate"
-                                {{ $errors->has('num_plate') ? 'alert-danger' : '' }} placeholder="Number Plate"
-                                value="{{ $vehicle->num_plate }}" required>
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" name="name"
+                                {{ $errors->has('name') ? 'alert-danger' : '' }} placeholder="Name"
+                                value="{{ $customer->name }}" required>
                         </div>
                         <div class="form-group">
-                            <label for="description">Description</label>
+                            <label for="description">Address</label>
                             {{-- <textarea class="form-control" {{ $errors->has('description') ? 'alert-danger' : '' }}
-                            name="description" rows="5" value="{{ $vehicle->description }}" required>
+                            name="address" rows="5" value="{{ $customer->address }}" required>
                             </textarea> --}}
-                            <input type="text-area" class="form-control" name="description" rows="3"
-                                {{$errors->has('description') ? 'alert-danger':''}} value="{{ $vehicle->description }} "
+                            <input type="text-area" class="form-control" name="address" rows="3"
+                                {{$errors->has('address') ? 'alert-danger':''}} value="{{ $customer->address }} "
                                 required>
                         </div>
                         <div class="form-group">
-                            <label for="chassisNumber">Chassis Number</label>
-                            <input type="text" class="form-control" name="cha_num"
-                                {{ $errors->has('cha_num') ? 'alert-danger' : '' }} placeholder="Chassis No."
-                                value="{{ $vehicle->cha_num }}" required>
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" name="email"
+                                {{ $errors->has('email') ? 'alert-danger' : '' }} placeholder="Email"
+                                value="{{ $customer->email }}" required>
 
                         </div>
                         <div class="form-group">
-                            <label for="model">Model</label>
-                            <input type="text" class="form-control" name="model"
-                                {{ $errors->has('model') ? 'alert-danger' : '' }} placeholder="Model"
-                                value="{{ $vehicle->model }}" required>
+                            <label for="phone">Phone</label>
+                            <input type="text" class="form-control" name="phone"
+                                {{ $errors->has('phone') ? 'alert-danger' : '' }} placeholder="Phone"
+                                value="{{ $customer->phone }}" required>
 
                         </div>
-                        <div class="form-group">
-                            <label for="code">Code</label>
-                            <input type="text" class="form-control" name="code"
-                                {{ $errors->has('code') ? 'alert-danger' : '' }} placeholder="Code"
-                                value="{{ $vehicle->code }}" required>
 
-                        </div>
-                        <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
-                    </form>
                 </div>
+                <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                <button class="btn btn-light">Cancel</button>
+                </form>
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection

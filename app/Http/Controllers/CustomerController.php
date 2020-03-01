@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Vehicle;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -15,6 +16,9 @@ class CustomerController extends Controller
     public function index()
     {
         //
+        $customers = Customer::latest()->get();
+
+        return view('admin.customers', compact('customers'));
     }
 
     /**
@@ -36,6 +40,16 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = request()->validate([
+            'name' => ['required', 'min:4'],
+            'address' => ['required', 'min:5'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'min:10', 'max:10'],
+        ]);
+
+        Customer::create($validatedData);
+
+        return redirect('/customers');
     }
 
     /**
@@ -47,6 +61,7 @@ class CustomerController extends Controller
     public function show(Customer $customer)
     {
         //
+
     }
 
     /**
@@ -55,9 +70,12 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit($id)
     {
         //
+        $customer = Customer::find($id);
+
+        return view('admin.edit-customer', compact('customer'));
     }
 
     /**
@@ -70,6 +88,21 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
         //
+        $validatedData = request()->validate([
+            'name' => ['required', 'min:4'],
+            'address' => ['required', 'min:5'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'min:10', 'max:10'],
+        ]);
+
+        $customer->name = $validatedData['name'];
+        $customer->address = $validatedData['address'];
+        $customer->email = $validatedData['email'];
+        $customer->phone = $validatedData['phone'];
+
+        $customer->save();
+
+        return redirect('/customers');
     }
 
     /**
@@ -81,5 +114,8 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         //
+        $customer->delete();
+
+        return redirect('/customers');
     }
 }
