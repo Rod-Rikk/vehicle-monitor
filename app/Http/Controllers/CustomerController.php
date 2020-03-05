@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
-use App\Vehicle;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller

@@ -120,11 +120,11 @@
 
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="pages/ui-features/buttons.html">Current Jobs
+                                        href="/jobs">Current Jobs
                                         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                                     </a></li>
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="pages/ui-features/buttons.html">Finished
+                                        href="/finished_jobs">Finished
                                         Jobs
                                         <i class="mdi mdi-briefcase-check
                                 menu-icon"></i>

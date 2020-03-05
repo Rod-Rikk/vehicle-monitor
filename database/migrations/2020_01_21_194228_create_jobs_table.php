@@ -19,6 +19,7 @@ class CreateJobsTable extends Migration
             $table->text('description');
             $table->string('vehicle_code')->unique();
             $table->string('location');
+            $table->boolean('job_done');
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();

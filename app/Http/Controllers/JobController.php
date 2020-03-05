@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Job;
+use App\Customer;
+use App\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JobController extends Controller
 {
@@ -15,6 +18,9 @@ class JobController extends Controller
     public function index()
     {
         //
+        $jobs = Job::latest()->get();
+
+        return view('admin.jobs', compact('jobs'));
     }
 
     /**
@@ -36,6 +42,20 @@ class JobController extends Controller
     public function store(Request $request)
     {
         //
+
+        $validatedData  = request()->validate([
+            'customer_name' => ['required'],
+            'description' => ['required', 'min:3'],
+            'vehicle_code' => ['required'],
+            'location' => ['required', 'min:3'],
+            'job_done' => ['0'],
+            'start_date' => ['required', 'min:1000-01-01', 'max:3000-12-31'],
+            'end_date' => ['required', 'min:1000-01-01', 'max:3000-12-31'],
+        ]);
+
+        Job::create($validatedData);
+
+        return redirect('/jobs');
     }
 
     /**
@@ -81,5 +101,38 @@ class JobController extends Controller
     public function destroy(Job $job)
     {
         //
+    }
+
+
+    /**Custom Conrollers */
+    public function getCustomers()
+    {
+
+        $customers = Customer::get();
+
+        return response($customers);
+    }
+
+    public function getVehicles()
+    {
+        $vehicles = Vehicle::get();
+
+        return response($vehicles);
+    }
+
+    /**Show the application data */
+    public function dataAjax(Request $request)
+    {
+        $data = [];
+
+        if ($request->has('q')) {
+            $search = $request->q;
+            $data = DB::table("customers")
+                ->select("id", "name")
+                ->where('name', 'LIKE', "%$search%")
+                ->get();
+        }
+
+        return response()->json($data);
     }
 }
