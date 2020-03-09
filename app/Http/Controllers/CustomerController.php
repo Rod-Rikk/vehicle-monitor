@@ -43,7 +43,7 @@ class CustomerController extends Controller
             'name' => ['required', 'min:4'],
             'address' => ['required', 'min:5'],
             'email' => ['required', 'email'],
-            'phone' => ['required', 'min:10', 'max:10'],
+            'phone' => ['required', 'min:10', 'max:20'],
         ]);
 
         Customer::create($validatedData);

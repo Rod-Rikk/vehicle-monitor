@@ -103,7 +103,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="/customers">
-                            <span class="menu-title">Customers</span>
+                            <span class="menu-title text-uppercase">Customers</span>
                             <i class="mdi mdi-contacts menu-icon"></i>
                         </a>
                     </li>
@@ -112,18 +112,18 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                             aria-controls="ui-basic">
-                            <span class="menu-title">Jobs</span>
+                            <span class="menu-title text-uppercase">Jobs</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-crosshairs-gps menu-icon"></i>
                         </a>
                         <div class="collapse" id="ui-basic"><i class="mdi mdi-crosshairs-gps menu-icon"></i>
 
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link"
+                                <li class="nav-item text-uppercase"> <a class="nav-link"
                                         href="/jobs">Current Jobs
                                         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                                     </a></li>
-                                <li class="nav-item"> <a class="nav-link"
+                                <li class="nav-item text-uppercase"> <a class="nav-link"
                                         href="/finished_jobs">Finished
                                         Jobs
                                         <i class="mdi mdi-briefcase-check
@@ -135,7 +135,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="vehicles">
-                            <span class="menu-title">Vehicles</span>
+                            <span class="menu-title text-uppercase">Vehicles</span>
                             <i class="mdi mdi-truck menu-icon"></i>
                         </a>
                     </li>
@@ -179,7 +179,7 @@
     <!-- inject:js -->
     <script src="{{ asset('vendors/off-canvas.js')}}"></script>
     <script src="{{ asset('vendors/hoverable-collapse.js')}}"></script>
-    <script src="{{ asset('vendors/misc.js')}}"></script> --}}
+    <script src="{{ asset('vendors/misc.js')}}"></script> 
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{ asset('vendors/dashboard.js')}}"></script>

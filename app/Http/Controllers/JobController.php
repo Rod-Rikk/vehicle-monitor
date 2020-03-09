@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Job;
@@ -10,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class JobController extends Controller
 {
-    /**
+    /** 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -28,9 +27,13 @@ class JobController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public static function create()
     {
         //
+        $customers = Customer::get();
+        $vehicles = Vehicle::get();
+
+        return view('admin.create-job',compact('customers','vehicles'));
     }
 
     /**
