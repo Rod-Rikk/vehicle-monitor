@@ -15,7 +15,7 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreign('customer_name');
+            $table->string('customer_name');
             $table->text('description');
             $table->string('vehicle_code')->unique();
             $table->string('location');
