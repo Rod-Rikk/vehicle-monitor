@@ -14,4 +14,8 @@ class Job extends Model
     public function customer(){
         return $this->hasOne('App\Customer');
     }
+
+    public function vehicle(){
+        return $this->hasOne('App\Vehicle');
+    }
 }

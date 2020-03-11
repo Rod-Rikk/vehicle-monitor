@@ -15,9 +15,9 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('customer_name');
+            $table->unsignedBigInteger('customer_id')->references('id')->on('customers');
             $table->text('description');
-            $table->string('vehicle_code')->unique();
+            $table->unsignedBigInteger('vehicle_id')->references('id')->on('vehicles');
             $table->string('location');
             $table->boolean('job_done');
             $table->date('start_date');
