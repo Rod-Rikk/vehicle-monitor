@@ -30,8 +30,7 @@
             <ul class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
                     <span></span>
-                <button type="button" class="btn btn-gradient-primary btn-md"> <a href="/create-job"></a><i
-                            class="mdi mdi-database-plus icon-sm text-white align-middle mdi-24px"></i> </button>
+                    <a href="/create-job" class="btn btn-gradient-primary btn-md mdi mdi-database-plus mdi-24px"></a>
 
                 </li>
             </ul>
@@ -55,8 +54,6 @@
                             <th> Customer </th>
                             <th> Description</th>
                             <th> Vehicle Code </th>
-                            <th> Phone </th>
-                            <th> Location</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,8 +62,6 @@
                             <td>{{$job->customer_name }}</td>
                             <td>{{ $job->description }}</td>
                             <td>{{ $job->vehicle_code}}</td>
-                            <td>{{ $job->location }}</td>
-                            
                             <td><a href="/jobs/{{$job->id}}/edit" class="btn btn-user btn-cancel"><i
                                         class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
                             </td>

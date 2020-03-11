@@ -5,6 +5,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Create Job</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
@@ -32,14 +33,12 @@
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
                 <i class="mdi mdi-car"></i>
-            </span> Make modifications </h3>
+            </span> Job </h3>
         <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
                     <span></span>
-                    <button type="button" class="btn btn-gradient-primary btn-md"><i
-                            class="mdi mdi-keyboard-return icon-sm text-white align-middle mdi-24px"> <a
-                                href="/customers"></a></i> </button>
+                    <a href="/jobs" class="btn btn-gradient-primary btn-md mdi mdi-keyboard-return mdi-24px"></a>
 
                 </li>
             </ul>
@@ -66,13 +65,20 @@
                     <form class="user-form" method="POST" action="/jobs">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <select class="ui search dropdown" name="customer" aria-placeholder="Customer">
+                            <label for="customer" style="margin-right:6px">Select customer</label>
+                            <select class="ui fluid search selection dropdown" id="search-select" name="customer_name"
+                                aria-placeholder="Customer">
                                 @foreach ($customers as $customer)
                                 <option value="{{$customer->id}}">{{$customer->name}}</option>
                                 @endforeach
                             </select>
+                            <script text="javformascript">
+                                $('#search-select')
+                              .dropdown();
+                            </script>
 
                         </div>
+
 
                         <div class="form-group">
                             <label for="description">Job Description</label>
@@ -83,8 +89,10 @@
 
                         </div>
                         <div class="form-group">
+                            <label for="vehicle" style="margin-right:6px">Select vehicle code</label>
 
-                            <select class="ui search dropdown" name="vehicle" aria-placeholder="Vehicle">
+                            <select class="ui fluid search selection dropdown" name="vehicle_code" id="search-select2"
+                                aria-placeholder="Vehicle">
                                 @foreach ($vehicles as $vehicle)
                                 <option value="{{$vehicle->id}}">{{$vehicle->code}}</option>
                                 @endforeach
@@ -124,21 +132,19 @@
     </div>
 </div>
 
-
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+<script text="javascript">
+    $('#search-select')
+  .dropdown();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+
+<script text="javascript">
+    $('$search-select2')
+    .dropdown();
 </script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-</script>
+
+<!-- You MUST include jQuery before Fomantic -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
+<script src="/semantic/dist/semantic.min.js"></script>
 
 @endsection

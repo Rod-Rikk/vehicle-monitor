@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Job;
@@ -33,7 +34,7 @@ class JobController extends Controller
         $customers = Customer::get();
         $vehicles = Vehicle::get();
 
-        return view('admin.create-job',compact('customers','vehicles'));
+        return view('admin.create-job', compact('customers', 'vehicles'));
     }
 
     /**
@@ -52,11 +53,19 @@ class JobController extends Controller
             'vehicle_code' => ['required'],
             'location' => ['required', 'min:3'],
             'job_done' => ['0'],
-            'start_date' => ['required', 'min:1000-01-01', 'max:3000-12-31'],
-            'end_date' => ['required', 'min:1000-01-01', 'max:3000-12-31'],
+            'start_date' => ['required'],
+            'end_date' => ['required'],
         ]);
+        $job = new Job();
+        $job->customer_name = $validatedData['customer_name'];
+        $job->description = $validatedData['description'];
+        $job->vehicle_code = $validatedData['vehicle_code'];
+        $job->location = $validatedData['location'];
+        $job->job_done = 0;
+        $job->start_date = $validatedData['start_date'];
+        $job->end_date = $validatedData['end_date'];
 
-        Job::create($validatedData);
+        $job->save();
 
         return redirect('/jobs');
     }
@@ -67,9 +76,10 @@ class JobController extends Controller
      * @param  \App\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show($id)
     {
         //
+        $job = Job::find($id);
     }
 
     /**
@@ -78,9 +88,12 @@ class JobController extends Controller
      * @param  \App\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function edit(Job $job)
+    public function edit($id)
     {
         //
+        $job = Job::find($id);
+
+        return view('admin.edit-job', compact('job'));
     }
 
     /**
@@ -93,6 +106,27 @@ class JobController extends Controller
     public function update(Request $request, Job $job)
     {
         //
+        $validatedData  = request()->validate([
+            'customer_name' => ['required'],
+            'description' => ['required', 'min:3'],
+            'vehicle_code' => ['required'],
+            'location' => ['required', 'min:3'],
+            'job_done' => ['0'],
+            'start_date' => ['required'],
+            'end_date' => ['required'],
+        ]);
+
+        $job->customer_name = $validatedData['customer_name'];
+        $job->description = $validatedData['description'];
+        $job->vehicle_code = $validatedData['vehicle_code'];
+        $job->location = $validatedData['location'];
+        $job->job_done = $validatedData['job_done'];
+        $job->start_date = $validatedData['start_date'];
+        $job->end_date = $validatedData['end_date'];
+
+        $job->save();
+
+        return redirect('/jobs');
     }
 
     /**
@@ -108,6 +142,12 @@ class JobController extends Controller
 
 
     /**Custom Conrollers */
+    public function markAsFinished(Job $job){
+        
+    }
+
+
+
     public function getCustomers()
     {
 
@@ -138,4 +178,6 @@ class JobController extends Controller
 
         return response()->json($data);
     }
+
+    
 }

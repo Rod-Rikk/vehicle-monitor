@@ -23,5 +23,8 @@
         "semantic-ui-css": "^2.4.1",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "fomantic-ui": "^2.8.4"
     }
 }
