@@ -20,6 +20,7 @@ class CreateJobsTable extends Migration
             $table->unsignedBigInteger('vehicle_id')->references('id')->on('vehicles');
             $table->string('location');
             $table->boolean('job_done');
+            $table->longText('remarks')->nullable();
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();

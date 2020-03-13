@@ -87,12 +87,14 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
         //
+
         $validatedData = request()->validate([
             'name' => ['required', 'min:4'],
             'address' => ['required', 'min:5'],
             'email' => ['required', 'email'],
-            'phone' => ['required', 'min:10', 'max:10'],
+            'phone' => ['required', 'min:10', 'max:15'],
         ]);
+       // dd($validatedData);
 
         $customer->name = $validatedData['name'];
         $customer->address = $validatedData['address'];
@@ -100,6 +102,8 @@ class CustomerController extends Controller
         $customer->phone = $validatedData['phone'];
 
         $customer->save();
+        
+        //$customer->update($validatedData);
 
         return redirect('/customers');
     }

@@ -12,10 +12,10 @@ class Job extends Model
     ];
 
     public function customer(){
-        return $this->hasOne('App\Customer');
+        return $this->belongsTo(Customer::class,'customer_id','id');
     }
 
     public function vehicle(){
-        return $this->hasOne('App\Vehicle');
+        return $this->belongsTo(Vehicle::class,'vehicle_id','id');
     }
 }

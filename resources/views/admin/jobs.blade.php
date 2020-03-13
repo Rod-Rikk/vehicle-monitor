@@ -59,9 +59,9 @@
                     <tbody>
                         @foreach ($jobs as $job)
                         <tr>
-                            <td>{{$job->customer_name }}</td>
+                            <td>{{$job->customer->name }}</td>
                             <td>{{ $job->description }}</td>
-                            <td>{{ $job->vehicle_code}}</td>
+                            <td>{{ $job->vehicle->code}}</td>
                             <td><a href="/jobs/{{$job->id}}/edit" class="btn btn-user btn-cancel"><i
                                         class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
                             </td>

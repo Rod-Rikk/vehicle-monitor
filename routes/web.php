@@ -26,14 +26,18 @@ Route::resource('/customers', 'CustomerController');
 
 Route::resource('/jobs', 'JobController');
 
+Route::get('/create-job', 'JobController@create');
+
+Route::get('/finished_jobs','FinishedJobsController@index');
+
+
+// Custom routes for getting specific data
+
+Route::get('/autocomplete-ajax', 'JobController@dataAjax');
+
 Route::get('/job_customers', 'JobController@getCustomers');
 
 Route::get('/job_vehicles', 'JobController@getVehicles');
 
-Route::get('/create-job', 'JobController@create');
-
-Route::get('/autocomplete-ajax', 'JobController@dataAjax');
-
-// Route::get('/finished_jobs','JobController');
 
 Route::get('/admin', 'HomeController@adminIndex')->name('admin');

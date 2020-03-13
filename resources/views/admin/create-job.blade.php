@@ -66,13 +66,13 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="customer" style="margin-right:6px">Select customer</label>
-                            <select class="ui fluid search selection dropdown" id="search-select" name="customer_name"
+                            <select class="ui fluid search selection dropdown" id="search-select" name="customer_id"
                                 aria-placeholder="Customer">
                                 @foreach ($customers as $customer)
                                 <option value="{{$customer->id}}">{{$customer->name}}</option>
                                 @endforeach
                             </select>
-                            <script text="javformascript">
+                            <script text="javascript">
                                 $('#search-select')
                               .dropdown();
                             </script>
@@ -91,7 +91,7 @@
                         <div class="form-group">
                             <label for="vehicle" style="margin-right:6px">Select vehicle code</label>
 
-                            <select class="ui fluid search selection dropdown" name="vehicle_code" id="search-select2"
+                            <select class="ui fluid search selection dropdown" name="vehicle_id" id="search-select2"
                                 aria-placeholder="Vehicle">
                                 @foreach ($vehicles as $vehicle)
                                 <option value="{{$vehicle->id}}">{{$vehicle->code}}</option>
