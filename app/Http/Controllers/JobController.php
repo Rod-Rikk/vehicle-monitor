@@ -18,7 +18,7 @@ class JobController extends Controller
     public function index()
     {
         //
-        $jobs = Job::with('customer', 'vehicle')->where('job_done', '==', 0)->latest()->get();
+        $jobs = Job::with('customer', 'vehicle')->where('job_done', '=', 0)->latest()->get();
         return view('admin.jobs', compact('jobs'));
     }
 
@@ -153,12 +153,7 @@ class JobController extends Controller
     }
 
 
-    /**Custom Conrollers */
-    public function markAsFinished(Job $job)
-    {
-    }
-
-
+    /**Custom Controllers */
 
     public function getCustomers()
     {

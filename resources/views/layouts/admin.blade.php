@@ -124,7 +124,7 @@
                                         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                                     </a></li>
                                 <li class="nav-item text-uppercase"> <a class="nav-link"
-                                        href="/finished_jobs">Finished
+                                        href="/finished-jobs">Finished
                                         Jobs
                                         <i class="mdi mdi-briefcase-check
                                 menu-icon"></i>

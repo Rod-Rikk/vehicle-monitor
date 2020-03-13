@@ -11,8 +11,29 @@ class FinishedJobsController extends Controller
 
     public function index()
     {
-        $finished_jobs = Job::with('customers', 'vehicles')->where('job_done', '==', 1)->latest()->get();
+        $jobs = Job::with('customer', 'vehicle')->where('job_done', '=', 1)->latest()->get();
 
-        return view('finished_jobs', compact('finished_jobs'));
+
+        return view('admin.finished-jobs', compact('jobs'));
     }
+
+    public function show(Job $job){
+        return view('admin.finished-jobs',compact('job'));
+    }
+
+    public function edit(Job $job){
+        return view('admin.edit-finished-job',compact('job'));
+    }
+
+    public function update(Request $request, Job $job){
+
+    }
+
+    public function delete(Request $request, Job $job) {
+        $job->delete();
+
+        return redirect('admin.finished_jobs');
+    }
+
+
 }

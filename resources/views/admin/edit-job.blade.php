@@ -139,8 +139,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <textarea class="form-control" name="remarks" rows="6" placeholder="Finished remarks"
-                                > </textarea>
+                            <textarea class="form-control" name="remarks" rows="6"
+                                placeholder="Finished remarks"> </textarea>
                         </div>
                         <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>

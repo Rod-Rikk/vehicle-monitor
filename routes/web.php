@@ -28,7 +28,7 @@ Route::resource('/jobs', 'JobController');
 
 Route::get('/create-job', 'JobController@create');
 
-Route::get('/finished_jobs','FinishedJobsController@index');
+Route::get('/finished-jobs','FinishedJobsController@index');
 
 
 // Custom routes for getting specific data
