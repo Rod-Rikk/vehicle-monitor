@@ -27,7 +27,10 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/ins2wgm.css">
     {{-- <script src="https://kit.fontawesome.com/6116065486.js" crossorigin="anonymous"></script> --}}
+
+    {{-- Styles --}}
     <link rel="stylesheet" href="{{ asset('vendors/mdi/css/materialdesignicons.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}" rel="stylesheet">
 

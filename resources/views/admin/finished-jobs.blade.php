@@ -50,13 +50,13 @@
                             <td>{{$job->customer->name }}</td>
                             <td>{{ $job->description }}</td>
                             <td>{{ $job->vehicle->code}}</td>
-                            <td><a href="/jobs/{{$job->id}}/edit" class="btn btn-user btn-cancel"><i
-                                        class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
+                            <td><a href="/finished-jobs/{{$job->id}}" class="btn btn-user btn-cancel"><i
+                                        class="mdi mdi-eye text-warning mdi-24px"></i></a>
                             </td>
                             <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal"><i
                                         class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
                             </td>
-                            <form method="POST" action="/jobs/ {{ $job->id }}">
+                            <form method="POST" action="/finished-jobs/ {{ $job->id }}">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                                 <!-- Modal to confirm deletion-->

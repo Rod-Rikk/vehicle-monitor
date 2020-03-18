@@ -104,16 +104,16 @@
                         </div>
                         <div class="form-group">
                             <label for="start_date">Start Date</label>
-                            <input type="date" class="form-control" name="start_date" min="1000-01-01" max="3000-12-31"
-                                {{ $errors->has('start_date') ? 'alert-danger' : '' }} placeholder=""
+                            <input type="date" date-format='yyyy-mm-dd' class="form-control" name="start_date"
+                                min="1000-01-01" max="3000-12-31" {{ $errors->has('start_date') ? 'alert-danger' : '' }}
                                 value="{{ $job->start_date }}" required>
 
                         </div>
 
                         <div class="form-group">
                             <label for="end_date">End Date</label>
-                            <input type="date" class="form-control" name="end_date" min="1000-01-01" max="3000-12-31"
-                                {{ $errors->has('end_date') ? 'alert-danger' : '' }} placeholder=""
+                            <input type="date" date-format='yyyy-mm-dd' class="form-control" name="end_date"
+                                min="1000-01-01" max="3000-12-31" {{ $errors->has('end_date') ? 'alert-danger' : '' }}
                                 value="{{ $job->end_date }}" required>
 
                         </div>

@@ -11,6 +11,10 @@ class Job extends Model
         'customer_name','description','vehicle_code','location','start_date','end_date'
     ];
 
+    protected $dates = [
+        'start_date', 'end_date'
+    ];
+
     public function customer(){
         return $this->belongsTo(Customer::class,'customer_id','id');
     }
