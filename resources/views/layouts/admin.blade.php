@@ -49,7 +49,8 @@
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                 <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo"></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo"></a>
+                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
+                        alt="logo"></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -61,7 +62,8 @@
                             <div class="input-group-prepend bg-transparent">
                                 <i class="input-group-text border-0 mdi mdi-magnify"></i>
                             </div>
-                            <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
+                            <input type="text" class="form-control bg-transparent border-0"
+                                placeholder="Search projects">
                         </div>
                     </form>
                 </div>
@@ -75,7 +77,8 @@
 
 
                 </ul>
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
                     <span class="mdi mdi-menu"></span>
                 </button>
             </div>
@@ -122,12 +125,10 @@
                         <div class="collapse" id="ui-basic"><i class="mdi mdi-crosshairs-gps menu-icon"></i>
 
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item text-uppercase"> <a class="nav-link"
-                                        href="/jobs">Current Jobs
+                                <li class="nav-item text-uppercase"> <a class="nav-link" href="/jobs">Current Jobs
                                         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                                     </a></li>
-                                <li class="nav-item text-uppercase"> <a class="nav-link"
-                                        href="/finished-jobs">Finished
+                                <li class="nav-item text-uppercase"> <a class="nav-link" href="/finished-jobs">Finished
                                         Jobs
                                         <i class="mdi mdi-briefcase-check
                                 menu-icon"></i>
@@ -148,14 +149,15 @@
 
             <!-- partial -->
             <div class="main-panel">
-                
+
                 @yield('content')
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
                         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a
-                                href="https://www.bootstrapdash.com/" target="_blank">Skinnyman And Sons.</a>. All rights
+                                href="https://www.bootstrapdash.com/" target="_blank">Skinnyman And Sons.</a>. All
+                            rights
                             reserved.</span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Powered By
                             <i class="mdi mdi-weather-lightning text-warning mdi-24px">DreamJunkies</i></span>
@@ -166,7 +168,7 @@
             <!-- main-panel ends -->
 
         </div>
-        
+
 
     </div>
     {{-- </div> --}}
@@ -174,7 +176,7 @@
 
 
     <!-- plugins:js -->
-     <script src="{{ asset('vendors/js/vendor.bundle.base.js')}}"></script>
+    <script src="{{ asset('vendors/js/vendor.bundle.base.js')}}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="{{ asset('vendors/chart.js/Chart.min.js')}}"></script>
@@ -182,7 +184,7 @@
     <!-- inject:js -->
     <script src="{{ asset('vendors/off-canvas.js')}}"></script>
     <script src="{{ asset('vendors/hoverable-collapse.js')}}"></script>
-    <script src="{{ asset('vendors/misc.js')}}"></script> 
+    <script src="{{ asset('vendors/misc.js')}}"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{ asset('vendors/dashboard.js')}}"></script>

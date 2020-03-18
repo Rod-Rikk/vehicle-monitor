@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Job;
 use App\Customer;
 use App\Vehicle;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -62,6 +63,7 @@ class JobController extends Controller
         $job->vehicle_id = $validatedData['vehicle_id'];
         $job->location = $validatedData['location'];
         $job->job_done = 0;
+        $job->completed_on = null;
         $job->start_date = $validatedData['start_date'];
         $job->end_date = $validatedData['end_date'];
 
@@ -129,6 +131,12 @@ class JobController extends Controller
         $job->vehicle_id = $validatedData['vehicle_id'];
         $job->location = $validatedData['location'];
         $job->job_done = isset($request->job_done);
+
+        if ($job->job_done == '1') {
+            $job->completed_on = Carbon::now();
+        } else {
+            $job->completed_on = null;
+        }
         $job->remarks = $validatedData['remarks'];
         $job->start_date = $validatedData['start_date'];
         $job->end_date = $validatedData['end_date'];

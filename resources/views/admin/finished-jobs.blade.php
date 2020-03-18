@@ -4,7 +4,7 @@
 @section('content')
 
 <head>
-    <title>Current Jobs</title>
+    <title>Finished Jobs</title>
 </head>
 
 <div class="content-wrapper">

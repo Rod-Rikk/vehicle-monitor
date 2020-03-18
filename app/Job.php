@@ -12,7 +12,7 @@ class Job extends Model
     ];
 
     protected $dates = [
-        'start_date', 'end_date'
+        'start_date', 'end_date','completed_on'
     ];
 
     public function customer(){
