@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.home',['title'=>'Vehicles'])
 
 @section('content')
 

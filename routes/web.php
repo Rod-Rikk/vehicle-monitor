@@ -18,13 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/homex', 'HomeController@index')->name('home');
 
 Route::resource('/vehicles', 'VehicleController');
 
 Route::resource('/customers', 'CustomerController');
 
 Route::resource('/jobs', 'JobController');
+
+Route::resource('/users','UserController');
+
 
 Route::get('/create-job', 'JobController@create');
 
@@ -43,4 +46,4 @@ Route::get('/job_customers', 'JobController@getCustomers');
 Route::get('/job_vehicles', 'JobController@getVehicles');
 
 
-Route::get('/admin', 'HomeController@adminIndex')->name('admin');
+Route::get('/home', 'HomeController@adminIndex')->name('home');

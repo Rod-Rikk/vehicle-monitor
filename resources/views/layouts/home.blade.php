@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/resources/my_post.jpg">
     <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Home</title>
+    <title>{{ $title }}</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
     <!--     Fonts and icons     -->
@@ -25,7 +25,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://use.typekit.net/ins2wgm.css">
     {{-- <script src="https://kit.fontawesome.com/6116065486.js" crossorigin="anonymous"></script> --}}
@@ -67,15 +67,37 @@
                         </div>
                     </form>
                 </div>
-                <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item d-none d-lg-block full-screen-link">
-                        <a class="nav-link">
-                            <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
-                        </a>
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
+                    @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @endif
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
 
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
 
-
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                     data-toggle="offcanvas">
@@ -100,6 +122,7 @@
                             <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
                         </a>
                     </li>
+                    @if (Auth::User()->name == 'Admin' | Auth::User()->name == 'Manager')
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">
                             <span class="menu-title">Dashboard</span>
@@ -107,14 +130,20 @@
                         </a>
                     </li>
 
+                    @endif
+
+                    @if (Auth::User()->name == 'Admin' | Auth::User()->name == 'Manager')
+
                     <li class="nav-item">
                         <a class="nav-link" href="/customers">
                             <span class="menu-title text-uppercase">Customers</span>
                             <i class="mdi mdi-contacts menu-icon"></i>
                         </a>
                     </li>
+                    @endif
 
 
+                    @if (Auth::User()->id == '1' | Auth::User()->id == '2' | Auth::User()->id == '3')
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                             aria-controls="ui-basic">
@@ -137,13 +166,25 @@
                             </ul>
                         </div>
                     </li>
+                    @endif
+
+                    @if (Auth::User()->name =='Admin' | Auth::User()->name == 'Manager')
                     <li class="nav-item">
                         <a class="nav-link" href="vehicles">
                             <span class="menu-title text-uppercase">Vehicles</span>
                             <i class="mdi mdi-truck menu-icon"></i>
                         </a>
                     </li>
+                    @endif
 
+                    @if (Auth::User()->name =='Admin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users">
+                            <span class="menu-title text-uppercase">User management</span>
+                            <i class="mdi mdi-account-outline menu-icon"></i>
+                        </a>
+                    </li>
+                    @endif
                 </ul>
             </nav>
 
@@ -190,6 +231,7 @@
     <script src="{{ asset('vendors/dashboard.js')}}"></script>
     <script src="{{ asset('vendors/todolist.js')}}"></script>
     <!-- End custom js for this page -->
+
 
 </body>
 

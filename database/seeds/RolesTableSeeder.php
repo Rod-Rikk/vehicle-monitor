@@ -14,10 +14,9 @@ class RolesTableSeeder extends Seeder
     {
         //
         DB::table('roles')->insert([
-            ['name' => 'admin'],
-            ['name' => 'operator'],
-            ['name' => 'manager'],
-            ['name'=>'super-admin'],
+            ['name' => 'superadmin','description'=>'Super Administrator','permission_id'=>1],
+            ['name' => 'admin', 'description' => 'Administrator', 'permission_id'=>2], //password = user12345
+            ['name' => 'driver','description'=>'Driver','permission_id'=>3],
         ]);
     }
 }

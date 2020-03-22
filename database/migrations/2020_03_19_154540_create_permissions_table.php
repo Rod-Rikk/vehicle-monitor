@@ -16,9 +16,7 @@ class CreatePermissionsTable extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('key')->nullable();
-            $table->string('controller')->nullable();
-            $table->string('method')->nullable();
+            $table->string('slug');
             $table->timestamps();
         });
     }

@@ -27,7 +27,8 @@
                 <li class="breadcrumb-item active" aria-current="page">
                     <span></span>
                     <button type="button" class="btn btn-gradient-primary btn-md"><i
-                            class="mdi mdi-keyboard-return icon-sm text-white align-middle mdi-24px"> <a href="/customers"></a></i> </button>
+                            class="mdi mdi-keyboard-return icon-sm text-white align-middle mdi-24px"> <a
+                                href="/customers"></a></i> </button>
 
                 </li>
             </ul>
