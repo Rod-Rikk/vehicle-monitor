@@ -11,6 +11,8 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,22 +22,29 @@ Auth::routes();
 
 Route::get('/homex', 'HomeController@index')->name('home');
 
-Route::resource('/vehicles', 'VehicleController');
 
-Route::resource('/customers', 'CustomerController');
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('/vehicles', 'VehicleController');
 
-Route::resource('/jobs', 'JobController');
+    Route::resource('/customers', 'CustomerController');
 
-Route::resource('/users','UserController');
+    Route::resource('/jobs', 'JobController');
+
+    Route::resource('/users', 'UserController');
 
 
-Route::get('/create-job', 'JobController@create');
+    Route::get('/create-job', 'JobController@create');
 
-Route::get('/finished-jobs', 'FinishedJobsController@index');
+    Route::get('/finished-jobs', 'FinishedJobsController@index');
 
-Route::get('/finished-jobs/{job}', 'FinishedJobsController@show');
+    Route::get('/finished-jobs/{job}', 'FinishedJobsController@show');
 
-Route::delete('/finished-jobs', 'FinishedJobsController@delete');
+    Route::delete('/finished-jobs', 'FinishedJobsController@delete');
+
+    Route::resource('/roles','RoleController');
+});
+
+
 
 // Custom routes for getting specific data
 

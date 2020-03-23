@@ -2,6 +2,7 @@
 
 @section('content')
 
+@can('customer-list')
 <div class="content-wrapper">
     <div class="row d-none" id="proBanner">
         <div class="col-12">
@@ -14,7 +15,7 @@
                 <i class="mdi mdi-close" id="bannerClose"></i>
             </span>
         </div>
-    </div>
+    </div>`
 
     <div class="page-header">
         <h3 class="page-title">
@@ -25,9 +26,12 @@
             <ul class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
                     <span></span>
+
+                    @can('customer-create')
                     <button type="button" class="btn btn-gradient-primary btn-md" data-toggle="modal"
                         data-target="#createModal"><i
                             class="mdi mdi-database-plus icon-sm text-white align-middle mdi-24px"></i> </button>
+                    @endcan
 
                     <form method="POST" action="/customers">
                         {{ csrf_field() }}
@@ -128,7 +132,7 @@
                         <tr>
 
                             <th> Name </th>
-                            <th> Address</th>
+                            {{-- <th> Address</th> --}}
                             <th> Email </th>
                             <th> Phone </th>
                         </tr>
@@ -137,15 +141,20 @@
                         @foreach ($customers as $customer)
                         <tr>
                             <td>{{ $customer->name }}</td>
-                            <td>{{ $customer->address }}</td>
+                            {{-- <td>{{ $customer->address }}</td> --}}
                             <td>{{ $customer->email}}</td>
                             <td>{{ $customer->phone }}</td>
+                            @can('customer-edit')
                             <td><a href="/customers/{{$customer->id}}/edit" class="btn btn-user btn-cancel"><i
                                         class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
                             </td>
+                            @endcan
+
+                            @can('customer-delete')
                             <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal"><i
                                         class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
                             </td>
+                            @endcan
                             <form method="POST" action="/customers/ {{ $customer->id }}">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
@@ -187,6 +196,6 @@
         </div>
     </div>
 
-
+@endcan
 
     @endsection

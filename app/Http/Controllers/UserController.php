@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Models\Role; 
+use Spatie\Permission\Models\Permission;
+
 
 class UserController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +28,7 @@ class UserController extends Controller
     {
         //
         $users = User::latest()->get();
-
+        $roles = Role::pluck('name','name')->all();
         return view('admin.users', compact('users'));
     }
 
@@ -106,6 +118,11 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->update();
+
+        DB::table('model_has_roles')->where('model_id',$user)->delete();
+        $user->assignRole($request->input('roles'));
+
+        return redirect('/users')->with('success','User updated successfully');
     }
 
     /**
@@ -119,6 +136,6 @@ class UserController extends Controller
         //
         $user->delete();
 
-        return redirect('/users');
+        return redirect('/users')->with('success','User deleted successfully');
     }
 }

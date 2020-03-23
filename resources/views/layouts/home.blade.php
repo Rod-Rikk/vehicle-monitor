@@ -185,6 +185,13 @@
                         </a>
                     </li>
                     @endif
+
+                    <li class="nav-item">
+                        <a class="nav-link" href=" {{route('roles.index')}} ">
+                            <span class="menu-title text-uppercase">Roles</span>
+                            <i class="mdi mdi-account-key menu-icon"></i>
+                        </a>
+                    </li>
                 </ul>
             </nav>
 

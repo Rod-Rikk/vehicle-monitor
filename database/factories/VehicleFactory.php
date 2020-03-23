@@ -12,7 +12,7 @@ $factory->define(Vehicle::class, function (Faker $faker) {
         'num_plate'=>$faker->swiftBicNumber,
         'description'=>$faker->realText(),
         'cha_num'=>$faker->randomNumber(),
-        'model'=>$faker->text,
+        'model'=>$faker->word(),
         'code'=>$faker->unique()->currencyCode,
 
 
