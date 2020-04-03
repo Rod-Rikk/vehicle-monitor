@@ -32,6 +32,7 @@
 
                                     <th> Name </th>
                                     <th> Email </th>
+                                    <th> Role </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +41,9 @@
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email}}</td>
-                                    <td><a href="/users/{{$user->id}}" class="btn btn-user btn-cancel"><i class="mdi mdi-eye text-info mdi-24px"></i></a></td>
+                                    <td> <label class="badge badge-gradient-success text-uppercase">{{ $user->getRoleNames()[0] }}</label> </td>
+
+
                                     <td><a href="/users/{{$user->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
                                     </td>
                                     <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{$user->id}}"><i class="mdi mdi-account-remove text-danger mdi-24px"></i></a>
