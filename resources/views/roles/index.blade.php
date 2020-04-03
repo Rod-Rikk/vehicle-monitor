@@ -42,7 +42,7 @@
                                 <tr>
                                     <td>{{ $role->name }}</td>
                                     <td>{{ $role->created_at->diffForHumans()}}</td>
-                                      <td><a href="/roles/{{$role->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-eye text-info mdi-24px"></i></a>
+                                      <td><a href="/roles/{{$role->id}}" class="btn btn-user btn-cancel"><i class="mdi mdi-eye text-info mdi-24px"></i></a>
                                       </td>
                                     <td><a href="/roles/{{$role->id}}/edit" class="btn btn-user btn-cancel"><i
                                                 class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>

@@ -9,16 +9,26 @@
     <div class="container">
 
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 margin-tb">
-                    <div class="pull-left">
-                        <h2>Edit Role</h2>
-                    </div>
-                    <div class="pull-right" style="margin-left:90%">
-                        <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
-                    </div>
-                </div>
+
+            <div class="page-header">
+                <h3 class="page-title">
+                    <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                        <i class="mdi mdi-account-outline"></i>
+                    </span> Edit </h3>
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <span></span> <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
+
+
+                        </li>
+                    </ul>
+                </nav>
             </div>
+
+
+
+
 
 
             @if (count($errors) > 0)
@@ -40,7 +50,7 @@
                             <i class="mdi mdi-account-plus text-primary mdi-24px menu-icon" style="margin-left:10px"></i>
                         </div>
 
-                    <form style="margin-top:10px" method="POST" action="/roles/{{$role->id}}">
+                        <form style="margin-top:10px" method="POST" action="/roles/{{$role->id}}">
                             {{ method_field('PUT') }}
                             {{ csrf_field() }}
                             <div class="form-group">
