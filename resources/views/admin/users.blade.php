@@ -35,32 +35,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+
                                 @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email}}</td>
-                                    <td><a href="/users/{{$user->id}}/edit" class="btn btn-user btn-cancel"><i
-                                                class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
+                                    <td><a href="/users/{{$user->id}}" class="btn btn-user btn-cancel"><i class="mdi mdi-eye text-info mdi-24px"></i></a></td>
+                                    <td><a href="/users/{{$user->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
                                     </td>
-                                    <td><a class="btn btn-user btn-cancel" data-toggle="modal"
-                                    data-target="#deleteModal-{{$user->id}}"><i
-                                                class="mdi mdi-account-remove text-danger mdi-24px"></i></a>
+                                    <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{$user->id}}"><i class="mdi mdi-account-remove text-danger mdi-24px"></i></a>
                                     </td>
                                     <form method="POST" action="/users/ {{ $user->id }}">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
                                         <!-- Modal to confirm deletion-->
-                                    <div class="modal fade" id="deleteModal-{{$user->id}}" tabindex="-1" role="dialog"
-                                            aria-labelledby="deleteModalTitle" aria-hidden="true">
+                                        <div class="modal fade" id="deleteModal-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLongTitle">Confirm
                                                             deletion
                                                         </h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
@@ -68,14 +64,11 @@
                                                         Are you sure you want to delete this user?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                         <div>
-                                                            <button type="submit"
-                                                                class="btn btn-danger btn-user btn-cancel">
+                                                            <button type="submit" class="btn btn-danger btn-user btn-cancel">
                                                                 Delete
-                                                                <i style="margin-left=" 50px"
-                                                                    class="fas fa-trash-alt  "></i>
+                                                                <i style="margin-left=" 50px" class="fas fa-trash-alt  "></i>
                                                             </button>
 
                                                         </div>
@@ -113,30 +106,23 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name"
-                                {{ $errors->has('name') ? 'alert-danger' : '' }} placeholder="Name"
-                                value="{{ old('name') }}" required>
+                            <input type="text" class="form-control" name="name" {{ $errors->has('name') ? 'alert-danger' : '' }} placeholder="Name" value="{{ old('name') }}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email"
-                                {{ $errors->has('email') ? 'alert-danger' : '' }} placeholder="Email"
-                                value="{{ old('email') }}" required>
+                            <input type="email" class="form-control" name="email" {{ $errors->has('email') ? 'alert-danger' : '' }} placeholder="Email" value="{{ old('email') }}" required>
 
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" 
-                            {{ $errors->has('password') ? 'alert-danger' : '' }} placeholder="Password"
-                        value="{{ old('password') }}" required>
+                            <input type="password" class="form-control" name="password" {{ $errors->has('password') ? 'alert-danger' : '' }} placeholder="Password" value="{{ old('password') }}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="role">Select role</label>
-                               <select class="ui fluid search selection dropdown" style="margin-left:10px" id="search-select" name="role"
-                                aria-placeholder="Role">
+                            <select class="ui fluid search selection dropdown" style="margin-left:10px" id="search-select" name="role" aria-placeholder="Role">
                                 @foreach ($roles as $role)
                                 <option value="{{$role->id}}">{{$role->name}}</option>
                                 @endforeach

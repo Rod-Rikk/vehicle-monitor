@@ -32,7 +32,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('/users', 'UserController');
 
-
     Route::get('/create-job', 'JobController@create');
 
     Route::get('/finished-jobs', 'FinishedJobsController@index');
@@ -41,7 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::delete('/finished-jobs', 'FinishedJobsController@delete');
 
-    Route::resource('/roles','RoleController');
+    Route::resource('/roles', 'RoleController');
 });
 
 

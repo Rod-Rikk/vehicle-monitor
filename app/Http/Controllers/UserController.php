@@ -79,7 +79,7 @@ class UserController extends Controller
     {
         //
         $user = User::findOrFail($user->id);
-        return view('admin.user')->withUser($user);
+        return view('admin.show-user',compact($user));
     }
 
     /**
