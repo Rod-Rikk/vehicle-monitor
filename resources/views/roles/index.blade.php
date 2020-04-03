@@ -48,14 +48,14 @@
                                                 class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
                                     </td>
                                     <td><a class="btn btn-user btn-cancel" data-toggle="modal"
-                                            data-target="#deleteModal"><i
+                                    data-target="#deleteModal-{{$role->id}}"><i
                                                 class="mdi mdi-account-remove text-danger mdi-24px"></i></a>
                                     </td>
                                     <form method="POST" action="/roles/ {{ $role->id }}">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
                                         <!-- Modal to confirm deletion-->
-                                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                    <div class="modal fade" id="deleteModal-{{$role->id}}" tabindex="-1" role="dialog"
                                             aria-labelledby="deleteModalTitle" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -69,7 +69,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete this user?
+                                                        Are you sure you want to delete this user? {{$role->id}}
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
