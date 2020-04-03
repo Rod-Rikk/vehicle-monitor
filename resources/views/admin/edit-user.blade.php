@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.home',['title'=>'Edit user'])
 
 
 @section('content')
@@ -8,10 +8,8 @@
         <div class="col-12">
             <span class="d-flex align-items-center purchase-popup">
                 <p>Like what you see? Check out our premium version for more.</p>
-                <a href="https://github.com/BootstrapDash/PurpleAdmin-Free-Admin-Template" target="_blank"
-                    class="btn ml-auto download-button">Download Free Version</a>
-                <a href="https://www.bootstrapdash.com/product/purple-bootstrap-4-admin-template/" target="_blank"
-                    class="btn purchase-button">Upgrade To Pro</a>
+                <a href="https://github.com/BootstrapDash/PurpleAdmin-Free-Admin-Template" target="_blank" class="btn ml-auto download-button">Download Free Version</a>
+                <a href="https://www.bootstrapdash.com/product/purple-bootstrap-4-admin-template/" target="_blank" class="btn purchase-button">Upgrade To Pro</a>
                 <i class="mdi mdi-close" id="bannerClose"></i>
             </span>
         </div>
@@ -26,9 +24,7 @@
             <ul class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
                     <span></span>
-                    <button type="button" class="btn btn-gradient-primary btn-md"><i
-                            class="mdi mdi-keyboard-return icon-sm text-white align-middle mdi-24px"> <a
-                                href="/users"></a></i> </button>
+                    <button type="button" class="btn btn-gradient-primary btn-md"><i class="mdi mdi-keyboard-return icon-sm text-white align-middle mdi-24px"> <a href="/users"></a></i> </button>
 
                 </li>
             </ul>
@@ -53,29 +49,48 @@
 
                     <h4 class="card-title">Entry</h4>
                     <p class="card-description"> Update user</p>
-                <form class="user-form" style="margin-top:10px" method="POST" action="/users/{{$user->id}}">
+                    <form class="user-form" style="margin-top:10px" method="POST" action="/users/{{$user->id}}">
                         {{ method_field('PATCH') }}
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name"
-                                {{ $errors->has('name') ? 'alert-danger' : '' }} placeholder="Name"
-                                value="{{ $user->name }}" required>
+                            <input type="text" class="form-control" name="name" {{ $errors->has('name') ? 'alert-danger' : '' }} placeholder="Name" value="{{ $user->name }}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email"
-                                {{ $errors->has('email') ? 'alert-danger' : '' }} placeholder="Email"
-                                value="{{ $user->email }}" required>
+                            <input type="email" class="form-control" name="email" {{ $errors->has('email') ? 'alert-danger' : '' }} placeholder="Email" value="{{ $user->email }}" required>
 
                         </div>
+
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="hidden">
-                            <input type="password" class="form-control" name="password"
-                                {{ $errors->has('password') ? 'alert-danger' : '' }} placeholder="Password"
-                                value="{{ $user->password }}" required>
+                            <input type="password" class="form-control" name="password" {{ $errors->has('password') ? 'alert-danger' : '' }} placeholder="Password" value="{{ $user->password }}" required>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role">Select role</label> <br>
+                            {{-- @foreach ($user_role as $current)
+                                  <input class="text" class="form-control" disabled {{$current->name}}>
+                            @endforeach --}}
+                            {{-- <select class="ui fluid search selection dropdown">
+                                <label for="">current roles</label>
+                                @foreach ($user_role as $usr)
+                                <option value=""> {{$usr->name}}</option>
+                            @endforeach
+                            </select> --}}
+
+                            @foreach ($user_role as $usr)
+                            <button type="button" class="btn btn-inverse-secondary btn-fw">Current role: {{ $usr->name }}</button>
+                            @endforeach
+
+                            <select style="margin-left:10px" id="search-select" name="role" aria-placeholder="Role">
+                                @foreach ($roles as $role)
+                                <option value="{{$role->id}}">{{$role->name}}</option>
+                                @endforeach
+                            </select>
 
                         </div>
 

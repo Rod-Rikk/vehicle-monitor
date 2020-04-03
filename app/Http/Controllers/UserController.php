@@ -90,15 +90,18 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $user = new User();
         //
         $user = User::findOrFail($user->id);
 
-        $user_role = User::findOrFail($user->id)->role()->get();
+        // $user_role = User::findOrFail($user->id)->role->get();
+        $user_role = $user->roles->all();
+        //dd($user_role);
+        $roles = Role::all();
 
-        return view('admin.edit-user')->with([
+        return view('admin.edit-user',compact('user_role'))->with([
             'user' => $user,
-            'user_role' => $user_role
+            // 'user_role' => $user_role,
+            'roles' => $roles
         ]);
     }
 
@@ -114,7 +117,9 @@ class UserController extends Controller
         //
         $this->validate($request, [
             'name' => 'required|max:255',
-            'email' => 'required|email|unique:users'
+            'email' => 'required|email|',
+            'password' => 'required'
+
         ]);
 
         $user->name = $request->name;
