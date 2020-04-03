@@ -125,11 +125,22 @@
                                 value="{{ old('email') }}" required>
 
                         </div>
+
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password"
-                                {{ $errors->has('password') ? 'alert-danger' : '' }} placeholder="Password"
-                                value="{{ old('password') }}" required>
+                            <input type="password" class="form-control" name="password" 
+                            {{ $errors->has('password') ? 'alert-danger' : '' }} placeholder="Password"
+                        value="{{ old('password') }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="role">Select role</label>
+                               <select class="ui fluid search selection dropdown" style="margin-left:10px" id="search-select" name="role"
+                                aria-placeholder="Role">
+                                @foreach ($roles as $role)
+                                <option value="{{$role->id}}">{{$role->name}}</option>
+                                @endforeach
+                            </select>
 
                         </div>
 

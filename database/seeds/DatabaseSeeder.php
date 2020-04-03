@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             CustomersTableSeeder::class,
             VehiclesTableSeeder::class,
             //RolesTableSeeder::class,
-            UserSeeder::class,
+            //UserSeeder::class,
             PermissionsTableSeeder::class,
             CreateAdminUserSeeder::class,
         ]);

@@ -12,6 +12,7 @@ use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
+    use HasRoles;
     function __construct()
     {
         $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index', 'show']]);
@@ -28,8 +29,8 @@ class UserController extends Controller
     {
         //
         $users = User::latest()->get();
-        $roles = Role::pluck('name','name')->all();
-        return view('admin.users', compact('users'));
+        $roles = Role::all();
+        return view('admin.users', compact('users','roles'));
     }
 
     /**
@@ -63,7 +64,9 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return redirect('/users');
+        $user->assignRole($request->role);
+
+        return redirect('/users')->with('success','User created successfully');
     }
 
     /**
@@ -93,7 +96,7 @@ class UserController extends Controller
 
         $user_role = User::findOrFail($user->id)->role()->get();
 
-        return view('admin.user.edit')->with([
+        return view('admin.edit-user')->with([
             'user' => $user,
             'user_role' => $user_role
         ]);

@@ -122,17 +122,14 @@
                             <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
                         </a>
                     </li>
-                    @if (Auth::User()->name == 'Admin' | Auth::User()->name == 'Manager')
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/home">
                             <span class="menu-title">Dashboard</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
                     </li>
 
-                    @endif
 
-                    @if (Auth::User()->name == 'Admin' | Auth::User()->name == 'Manager')
 
                     <li class="nav-item">
                         <a class="nav-link" href="/customers">
@@ -140,10 +137,8 @@
                             <i class="mdi mdi-contacts menu-icon"></i>
                         </a>
                     </li>
-                    @endif
 
 
-                    @if (Auth::User()->id == '1' | Auth::User()->id == '2' | Auth::User()->id == '3')
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                             aria-controls="ui-basic">
@@ -166,25 +161,20 @@
                             </ul>
                         </div>
                     </li>
-                    @endif
 
-                    @if (Auth::User()->name =='Admin' | Auth::User()->name == 'Manager')
                     <li class="nav-item">
                         <a class="nav-link" href="vehicles">
                             <span class="menu-title text-uppercase">Vehicles</span>
                             <i class="mdi mdi-truck menu-icon"></i>
                         </a>
                     </li>
-                    @endif
 
-                    @if (Auth::User()->name =='Admin')
                     <li class="nav-item">
                         <a class="nav-link" href="/users">
                             <span class="menu-title text-uppercase">User management</span>
                             <i class="mdi mdi-account-outline menu-icon"></i>
                         </a>
                     </li>
-                    @endif
 
                     <li class="nav-item">
                         <a class="nav-link" href=" {{route('roles.index')}} ">
