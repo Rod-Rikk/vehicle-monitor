@@ -59,7 +59,7 @@ class VehicleController extends Controller
         // $data->code = $validatedData['code'];
         // $data->save();
 
-        return redirect('/vehicles');
+        return redirect('/vehicles')->with('success','Vehicle created successfully');
     }
 
     /**
@@ -114,9 +114,7 @@ class VehicleController extends Controller
 
         $vehicle->save();
 
-        $message = session()->flash('success', 'Record successfully updated');
-
-        return redirect('/vehicles');
+        return redirect('/vehicles')->with('success','Vehicle updated successfully');
     }
 
     /**
@@ -130,6 +128,6 @@ class VehicleController extends Controller
         //
         $vehicle->delete();
 
-        return redirect('/vehicles');
+        return redirect('/vehicles')->with('success','Vehicle successfully deleted');
     }
 }

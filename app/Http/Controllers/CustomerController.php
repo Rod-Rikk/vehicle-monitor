@@ -55,7 +55,7 @@ class CustomerController extends Controller
 
         Customer::create($validatedData);
 
-        return redirect('/customers');
+        return redirect('/customers')->with('success','Customer created successfully');
     }
 
     /**
@@ -112,7 +112,7 @@ class CustomerController extends Controller
 
         //$customer->update($validatedData);
 
-        return redirect('/customers');
+        return redirect('/customers')->with('success','Customer updated successfully');
     }
 
     /**
@@ -126,6 +126,6 @@ class CustomerController extends Controller
         //
         $customer->delete();
 
-        return redirect('/customers');
+        return redirect('/customers')->with('success','Customer deleted successfully');
     }
 }

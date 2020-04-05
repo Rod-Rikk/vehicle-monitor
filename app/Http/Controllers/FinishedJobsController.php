@@ -41,10 +41,10 @@ class FinishedJobsController extends Controller
     }
 
 
-    public function delete(Request $request, Job $job)
+    public function destroy(Job $job)
     {
         $job->delete();
 
-        return redirect('admin.finished_jobs');
+        return redirect('/finished-jobs');
     }
 }

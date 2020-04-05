@@ -34,13 +34,18 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/create-job', 'JobController@create');
 
-    Route::get('/finished-jobs', 'FinishedJobsController@index');
+    Route::resource('/finished-jobs', 'FinishedJobsController');
 
-    Route::get('/finished-jobs/{job}', 'FinishedJobsController@show');
+    //Route::get('/finished-jobs', 'FinishedJobsController@index');
 
-    Route::delete('/finished-jobs', 'FinishedJobsController@delete');
+    // Route::get('/finished-jobs/{job}', 'FinishedJobsController@show');
+
+    // Route::delete('/finished-jobs', 'FinishedJobsController@destroy');
 
     Route::resource('/roles', 'RoleController');
+
+    Route::get('/home', 'HomeController@adminIndex')->name('home');
+
 });
 
 
@@ -54,4 +59,3 @@ Route::get('/job_customers', 'JobController@getCustomers');
 Route::get('/job_vehicles', 'JobController@getVehicles');
 
 
-Route::get('/home', 'HomeController@adminIndex')->name('home');

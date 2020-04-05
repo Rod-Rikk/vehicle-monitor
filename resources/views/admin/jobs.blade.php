@@ -8,18 +8,14 @@
 </head>
 
 <div class="content-wrapper">
-    <div class="row d-none" id="proBanner">
-        <div class="col-12">
-            <span class="d-flex align-items-center purchase-popup">
-                <p>Like what you see? Check out our premium version for more.</p>
-                <a href="https://github.com/BootstrapDash/PurpleAdmin-Free-Admin-Template" target="_blank"
-                    class="btn ml-auto download-button">Download Free Version</a>
-                <a href="https://www.bootstrapdash.com/product/purple-bootstrap-4-admin-template/" target="_blank"
-                    class="btn purchase-button">Upgrade To Pro</a>
-                <i class="mdi mdi-close" id="bannerClose"></i>
-            </span>
-        </div>
+
+    {{-- A toast block to send feedback to user on a successful operation --}}
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+        {{$message}}
     </div>
+    @endif
+
 
     <div class="page-header">
         <h3 class="page-title">
@@ -62,24 +58,22 @@
                             <td>{{$job->customer->name }}</td>
                             <td>{{ $job->description }}</td>
                             <td>{{ $job->vehicle->code}}</td>
-                            <td><a href="/jobs/{{$job->id}}/edit" class="btn btn-user btn-cancel"><i
-                                        class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
+                            <td><a href="/jobs/{{$job->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
                             </td>
-                            <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal"><i
-                                        class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
+                            @can('job-delete')
+                            <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{$job->id}}"><i class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
                             </td>
+                            @endcan
                             <form method="POST" action="/jobs/ {{ $job->id }}">
-                                {{ method_field('DELETE') }}
+                                {{ method('DELETE') }}
                                 {{ csrf_field() }}
                                 <!-- Modal to confirm deletion-->
-                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-                                    aria-labelledby="deleteModalTitle" aria-hidden="true">
+                                <div class="modal fade" id="deleteModal-{{$job->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLongTitle">Confirm deletion</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -87,8 +81,7 @@
                                                 Are you sure you want to delete this record?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 <div>
                                                     <button type="submit" class="btn btn-danger btn-user btn-cancel">
                                                         Delete

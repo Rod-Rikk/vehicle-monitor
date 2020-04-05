@@ -54,8 +54,8 @@ class JobController extends Controller
             'vehicle_id' => ['required'],
             'location' => ['required', 'min:3'],
             'job_done' => ['0'],
-            'start_date' => ['required'],
-            'end_date' => ['required'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['required', 'date', 'after:start_date'],
         ]);
         $job = new Job();
         $job->customer_id = $validatedData['customer_id'];
@@ -69,7 +69,7 @@ class JobController extends Controller
 
         $job->save();
 
-        return redirect('/jobs');
+        return redirect('/jobs')->with('success', 'Job created successfully');
     }
 
     /**
@@ -120,8 +120,8 @@ class JobController extends Controller
             'location' => ['required', 'min:3'],
             'job_done' => [],
             'remarks' => [],
-            'start_date' => ['required'],
-            'end_date' => ['required'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['required', 'date', 'after:start_date'],
 
         ]);
 
@@ -143,7 +143,7 @@ class JobController extends Controller
 
         $job->save();
 
-        return redirect('/jobs');
+        return redirect('/jobs')->with('success', 'Job updated successfully');
     }
 
     /**
@@ -157,7 +157,7 @@ class JobController extends Controller
         //
         $job->delete();
 
-        return redirect('/jobs');
+        return redirect('/jobs')->with('success', 'Job deleted successfully');
     }
 
 

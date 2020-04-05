@@ -4,8 +4,13 @@
 
 
 <div class="content-wrapper">
-    <div class="row" id="proBanner">
+    {{-- A toast block to send feedback to user on a successful operation --}}
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success" style="font-family:'Nunito'">
+        {{$message}}
     </div>
+    @endif
+
     <div class="page-header">
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white mr-2">

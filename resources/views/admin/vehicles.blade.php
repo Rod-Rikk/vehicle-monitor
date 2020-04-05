@@ -3,18 +3,13 @@
 @section('content')
 
 <div class="content-wrapper">
-    <div class="row d-none" id="proBanner">
-        <div class="col-12">
-            <span class="d-flex align-items-center purchase-popup">
-                <p>Like what you see? Check out our premium version for more.</p>
-                <a href="https://github.com/BootstrapDash/PurpleAdmin-Free-Admin-Template" target="_blank"
-                    class="btn ml-auto download-button">Download Free Version</a>
-                <a href="https://www.bootstrapdash.com/product/purple-bootstrap-4-admin-template/" target="_blank"
-                    class="btn purchase-button">Upgrade To Pro</a>
-                <i class="mdi mdi-close" id="bannerClose"></i>
-            </span>
-        </div>
+    {{-- A toast block to send feedback to user on a successful operation --}}
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+        {{$message}}
     </div>
+    @endif
+
 
     <div class="page-header">
         <h3 class="page-title">
@@ -25,15 +20,12 @@
             <ul class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
                     <span></span>
-                    <button type="button" class="btn btn-gradient-primary btn-md" data-toggle="modal"
-                        data-target="#createModal"><i
-                            class="mdi mdi-database-plus icon-sm text-white align-middle mdi-24px"></i> </button>
+                    <button type="button" class="btn btn-gradient-primary btn-md" data-toggle="modal" data-target="#createModal"><i class="mdi mdi-database-plus icon-sm text-white align-middle mdi-24px"></i> </button>
 
                     <form method="POST" action="/vehicles">
                         {{ csrf_field() }}
                         <!-- Modal to create a vehicle-->
-                        <div class="modal fade" id="createModal" tabindex="-1" role="dialog"
-                            aria-labelledby="createModalTitle" aria-hidden="true">
+                        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalTitle" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -62,38 +54,25 @@
 
                                                     <div class="form-group">
                                                         <label for="numberPlate">Number plate</label>
-                                                        <input type="text" class="form-control" name="num_plate"
-                                                            {{ $errors->has('num_plate') ? 'alert-danger' : '' }}
-                                                            placeholder="Number Plate" value="{{ old('num_plate') }}"
-                                                            required>
+                                                        <input type="text" class="form-control" name="num_plate" {{ $errors->has('num_plate') ? 'alert-danger' : '' }} placeholder="Number Plate" value="{{ old('num_plate') }}" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="description">Description</label>
-                                                        <textarea class="form-control"
-                                                            {{ $errors->has('description') ? 'alert-danger' : '' }}
-                                                            name="description" rows="4" value="{{ old('num_plate') }}"
-                                                            required></textarea>
+                                                        <textarea class="form-control" {{ $errors->has('description') ? 'alert-danger' : '' }} name="description" rows="4" value="{{ old('num_plate') }}" required></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="chassisNumber">Chassis Number</label>
-                                                        <input type="text" class="form-control" name="cha_num"
-                                                            {{ $errors->has('cha_num') ? 'alert-danger' : '' }}
-                                                            placeholder="Chassis No." value="{{ old('num_plate') }}"
-                                                            required>
+                                                        <input type="text" class="form-control" name="cha_num" {{ $errors->has('cha_num') ? 'alert-danger' : '' }} placeholder="Chassis No." value="{{ old('num_plate') }}" required>
 
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="model">Model</label>
-                                                        <input type="text" class="form-control" name="model"
-                                                            {{ $errors->has('model') ? 'alert-danger' : '' }}
-                                                            placeholder="Model" value="{{ old('num_plate') }}" required>
+                                                        <input type="text" class="form-control" name="model" {{ $errors->has('model') ? 'alert-danger' : '' }} placeholder="Model" value="{{ old('num_plate') }}" required>
 
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="code">Code</label>
-                                                        <input type="number" class="form-control" name="code"
-                                                            {{ $errors->has('code') ? 'alert-danger' : '' }}
-                                                            placeholder="Code" value="{{ old('num_plate') }}" required>
+                                                        <input type="number" class="form-control" name="code" {{ $errors->has('code') ? 'alert-danger' : '' }} placeholder="Code" value="{{ old('num_plate') }}" required>
 
                                                     </div>
 
@@ -103,8 +82,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         <div>
                                             <button type="submit" class="btn btn-primary btn-user btn-cancel">
                                                 Submit
@@ -153,24 +131,20 @@
                             <td>{{ $vehicle->cha_num}}</td>
                             <td>{{ $vehicle->model }}</td>
                             <td>{{ $vehicle->code }}</td>
-                            <td><a href="/vehicles/{{$vehicle->id}}/edit" class="btn btn-user btn-cancel"><i
-                                        class="mdi mdi-tooltip-edit text-warning mdi-24px">Edit</i></a>
+                            <td><a href="/vehicles/{{$vehicle->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px">Edit</i></a>
                                 </button></td>
-                            <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal"><i
-                                        class="mdi mdi-delete-variant text-danger mdi-24px">Delete</i></a>
+                            <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal"><i class="mdi mdi-delete-variant text-danger mdi-24px">Delete</i></a>
                                 </button></td>
                             <form method="POST" action="/vehicles/ {{ $vehicle->id }}">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                                 <!-- Modal to confirm deletion-->
-                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-                                    aria-labelledby="deleteModalTitle" aria-hidden="true">
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLongTitle">Confirm deletion</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -178,8 +152,7 @@
                                                 Are you sure you want to delete this record?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 <div>
                                                     <button type="submit" class="btn btn-danger btn-user btn-cancel">
                                                         Delete
