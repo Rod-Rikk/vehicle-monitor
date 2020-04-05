@@ -40,16 +40,18 @@
                         <tr>
 
                             <th> Customer </th>
-                            <th> Description</th>
                             <th> Vehicle Code </th>
+                            <th> Completed On</th>
+
+
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($jobs as $job)
                         <tr>
                             <td>{{$job->customer->name }}</td>
-                            <td>{{ $job->description }}</td>
-                            <td>{{ $job->vehicle->code}}</td>
+                            <td>{{ $job->vehicle->code }}</td>
+                            <td>{{ $job->completed_on->diffForHumans()}}</td>
                             <td><a href="/finished-jobs/{{$job->id}}" class="btn btn-user btn-cancel"><i class="mdi mdi-eye text-warning mdi-24px"></i></a>
                             </td>
                             <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{ $job->id }}"><i class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
