@@ -35,61 +35,65 @@
                 <h4 class="card-title">Records</h4>
                 <p class="card-description"> Finished jobs
                 </p>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
 
-                            <th> Customer </th>
-                            <th> Vehicle Code </th>
-                            <th> Completed On</th>
+                                <th> Customer </th>
+                                <th> Vehicle Code </th>
+                                <th> Completed On</th>
 
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($jobs as $job)
-                        <tr>
-                            <td>{{$job->customer->name }}</td>
-                            <td>{{ $job->vehicle->code }}</td>
-                            <td>{{ $job->completed_on->diffForHumans()}}</td>
-                            <td><a href="/finished-jobs/{{$job->id}}" class="btn btn-user btn-cancel"><i class="mdi mdi-eye text-warning mdi-24px"></i></a>
-                            </td>
-                            <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{ $job->id }}"><i class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
-                            </td>
-                            <form method="POST" action="/finished-jobs/{{ $job->id }}">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                                <!-- Modal to confirm deletion-->
-                                <div class="modal fade" id="deleteModal-{{$job->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Confirm deletion</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure you want to delete this record?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <div>
-                                                    <button type="submit" class="btn btn-danger btn-user btn-cancel">
-                                                        Delete
-                                                        <i style="margin-left=" 50px" class="fas fa-trash-alt  "></i>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($jobs as $job)
+                            <tr>
+                                <td>{{$job->customer->name }}</td>
+                                <td>{{ $job->vehicle->code }}</td>
+                                <td>{{ $job->completed_on->diffForHumans()}}</td>
+                                <td><a href="/finished-jobs/{{$job->id}}" class="btn btn-user btn-cancel"><i class="mdi mdi-eye text-warning mdi-24px"></i></a>
+                                </td>
+                                <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{ $job->id }}"><i class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
+                                </td>
+                                <form method="POST" action="/finished-jobs/{{ $job->id }}">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                    <!-- Modal to confirm deletion-->
+                                    <div class="modal fade" id="deleteModal-{{$job->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Confirm deletion</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
                                                     </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete this record?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <div>
+                                                        <button type="submit" class="btn btn-danger btn-user btn-cancel">
+                                                            Delete
+                                                            <i style="margin-left=" 50px" class="fas fa-trash-alt  "></i>
+                                                        </button>
 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                </form>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
+
             </div>
         </div>
     </div>

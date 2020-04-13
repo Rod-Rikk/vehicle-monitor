@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <link href="https://fonts.googleapis.com/css?family=HelveticaNeue:200,600" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="76x76" href="/resources/my_post.jpg">
     <link rel="icon" type="image/png" href="{{asset('images/logo-mini.svg')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />

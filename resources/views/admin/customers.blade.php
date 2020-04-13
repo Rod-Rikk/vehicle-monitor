@@ -108,66 +108,70 @@
                 <h4 class="card-title">Customers Table</h4>
                 <p class="card-description"> Current customers
                 </p>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
 
-                            <th> Name </th>
-                            {{-- <th> Address</th> --}}
-                            <th> Email </th>
-                            <th> Phone </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($customers as $customer)
-                        <tr>
-                            <td>{{ $customer->name }}</td>
-                            {{-- <td>{{ $customer->address }}</td> --}}
-                            <td>{{ $customer->email}}</td>
-                            <td>{{ $customer->phone }}</td>
-                            @can('customer-edit')
-                            <td><a href="/customers/{{$customer->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
-                            </td>
-                            @endcan
+                                <th> Name </th>
+                                {{-- <th> Address</th> --}}
+                                <th> Email </th>
+                                <th> Phone </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($customers as $customer)
+                            <tr>
+                                <td>{{ $customer->name }}</td>
+                                {{-- <td>{{ $customer->address }}</td> --}}
+                                <td>{{ $customer->email}}</td>
+                                <td>{{ $customer->phone }}</td>
+                                @can('customer-edit')
+                                <td><a href="/customers/{{$customer->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
+                                </td>
+                                @endcan
 
-                            @can('customer-delete')
-                            <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal"><i class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
-                            </td>
-                            @endcan
-                            <form method="POST" action="/customers/ {{ $customer->id }}">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                                <!-- Modal to confirm deletion-->
-                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Confirm deletion</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure you want to delete this record?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <div>
-                                                    <button type="submit" class="btn btn-danger btn-user btn-cancel">
-                                                        Delete
-                                                        <i style="margin-left=" 50px" class="fas fa-trash-alt  "></i>
+                                @can('customer-delete')
+                                <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal"><i class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
+                                </td>
+                                @endcan
+                                <form method="POST" action="/customers/ {{ $customer->id }}">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                    <!-- Modal to confirm deletion-->
+                                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Confirm deletion</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
                                                     </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete this record?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <div>
+                                                        <button type="submit" class="btn btn-danger btn-user btn-cancel">
+                                                            Delete
+                                                            <i style="margin-left=" 50px" class="fas fa-trash-alt  "></i>
+                                                        </button>
 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                </form>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
+
             </div>
         </div>
     </div>
