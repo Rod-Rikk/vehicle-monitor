@@ -13,7 +13,10 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Vehicle Monitor'),
+
+    'name' => 'Vehicle Monitor',
+
+    'subtitle' => 'Seamless Management ',
 
     /*
     |--------------------------------------------------------------------------
