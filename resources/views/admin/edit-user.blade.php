@@ -35,7 +35,7 @@
 
     <div class="col-md-9 grid-margin stretch-card" style="margin-left:15%">
         <div class="card">
-            <div class="card">
+            <div class="card-responsive">
                 <div class="card-body">
 
                     @if ($errors->any())

@@ -3,12 +3,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}">
     <link rel="apple-touch-icon" sizes="76x76" href="/resources/my_post.jpg">
+
     <link rel="icon" type="image/png" href="{{asset('images/logo-mini.svg')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
     <title>{{ $title }}</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     {{-- <script src="https://kit.fontawesome.com/6116065486.js" crossorigin="anonymous"></script> --}}
     <!-- CSS Files -->
@@ -137,7 +141,8 @@
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-crosshairs-gps menu-icon"></i>
                         </a>
-                        <div class="collapse" id="ui-basic"><i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                        <div class="collapse" id="ui-basic">
+
 
                             <ul class="nav flex-column sub-menu">
 
@@ -197,11 +202,11 @@
                 <!-- partial:partials/_footer.html -->
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a href="https://www.bootstrapdash.com/" target="_blank">Skinnyman And Sons.</a>. All
-                            rights
-                            reserved.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Powered By
-                            <i class="mdi mdi-weather-lightning text-warning mdi-24px">DreamJunkies</i></span>
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <i class="mdi mdi-weather-lightning text-warning mdi-24px mr-2">DreamJunkies LLC.</i>All Rights Reserved.</span>
+                         
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Powered By 
+                            <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a></span>
+
                     </div>
                 </footer>
                 <!-- partial -->

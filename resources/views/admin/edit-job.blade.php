@@ -3,14 +3,6 @@
 
 @section('content')
 
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Edit Job</title>
-
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/semantic.min.css') }}">
-    <script src="{{ asset('js/semantic.min.js') }}"></script>
-</head>
 
 <div class="content-wrapper">
     <div class="row d-none" id="proBanner">
@@ -27,13 +19,15 @@
     <div class="page-header">
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
-                <i class="mdi mdi-car"></i>
+                <i class="mdi mdi-clipboard-alert"></i>
             </span> Make modifications </h3>
         <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">
                     <span></span>
-                    <button type="button" class="btn btn-gradient-primary btn-md"><i class="mdi mdi-keyboard-return icon-sm text-white align-middle mdi-24px"> <a href="/customers"></a></i> </button>
+                  <a href="/jobs"> <button type="button" class="btn btn-gradient-primary btn-md"><i class="mdi mdi-keyboard-return icon-sm text-white align-middle mdi-24px"></i></button></a>
+
+
 
                 </li>
             </ul>
@@ -94,17 +88,13 @@
                         </div>
                         <div class="form-group">
                             <label for="start_date">Start Date</label>
-                            <input type="date" date-format='yyyy-mm-dd' class="form-control" 
-                            name="start_date" min="1000-01-01" max="3000-12-31" {{ $errors->has('start_date') ? 'alert-danger' : '' }} 
-                            value="{{ substr($job->start_date,0,10) }}" required>
+                            <input type="date" date-format='yyyy-mm-dd' class="form-control" name="start_date" min="1000-01-01" max="3000-12-31" {{ $errors->has('start_date') ? 'alert-danger' : '' }} value="{{ substr($job->start_date,0,10) }}" required>
 
                         </div>
 
                         <div class="form-group">
                             <label for="end_date">End Date</label>
-                            <input type="date" date-format='yyyy-mm-dd' class="form-control" 
-                            name="end_date" min="1000-01-01" max="3000-12-31" {{ $errors->has('end_date') ? 'alert-danger' : '' }} 
-                            value="{{ substr($job->end_date,0,10) }}" required>
+                            <input type="date" date-format='yyyy-mm-dd' class="form-control" name="end_date" min="1000-01-01" max="3000-12-31" {{ $errors->has('end_date') ? 'alert-danger' : '' }} value="{{ substr($job->end_date,0,10) }}" required>
 
                         </div>
 
@@ -158,4 +148,8 @@
         .dropdown();
 
 </script>
+
+<script src="{{ asset('js/semantic.min.js') }}"></script>
+
+
 @endsection

@@ -31,64 +31,69 @@
                 <div class="card-body">
                     <div class="clearfix">
                         <h4 class="card-title float-left">Roles</h4>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
 
-                                    <th> Name </th>
-                                    <th> Created </th>
-                                    <th> Edit </th>
-                                    <th> Delete </th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                                        <th> Name </th>
+                                        <th> Created </th>
+                                        <th> View </th>
+                                        <th> Edit </th>
+                                        <th> Delete </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                @foreach ($roles as $role)
-                                <tr>
-                                    <td>{{ $role->name }}</td>
-                                    <td>{{ $role->created_at->diffForHumans()}}</td>
-                                    <td><a href="/roles/{{$role->id}}" class="btn btn-user btn-cancel"><i class="mdi mdi-eye text-info mdi-24px"></i></a>
-                                    </td>
-                                    <td><a href="/roles/{{$role->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
-                                    </td>
-                                    <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{$role->id}}"><i class="mdi mdi-account-remove text-danger mdi-24px"></i></a>
-                                    </td>
-                                    <form method="POST" action="/roles/ {{ $role->id }}">
-                                        {{ method_field('DELETE') }}
-                                        {{ csrf_field() }}
-                                        <!-- Modal to confirm deletion-->
-                                        <div class="modal fade" id="deleteModal-{{$role->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">Confirm
-                                                            deletion
-                                                        </h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Are you sure you want to delete this user? {{$role->id}}
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <div>
-                                                            <button type="submit" class="btn btn-danger btn-user btn-cancel">
-                                                                Delete
-                                                                <i style="margin-left=" 50px" class="fas fa-trash-alt  "></i>
+                                    @foreach ($roles as $role)
+                                    <tr>
+                                        <td>{{ $role->name }}</td>
+                                        <td>{{ $role->created_at->diffForHumans()}}</td>
+                                        <td><a href="/roles/{{$role->id}}" class="btn btn-user btn-cancel"><i class="mdi mdi-eye text-info mdi-24px"></i></a>
+                                        </td>
+                                        <td><a href="/roles/{{$role->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
+                                        </td>
+                                        <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{$role->id}}"><i class="mdi mdi-account-remove text-danger mdi-24px"></i></a>
+                                        </td>
+                                        <form method="POST" action="/roles/ {{ $role->id }}">
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                            <!-- Modal to confirm deletion-->
+                                            <div class="modal fade" id="deleteModal-{{$role->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Confirm
+                                                                deletion
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
                                                             </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Are you sure you want to delete this user? {{$role->id}}
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <div>
+                                                                <button type="submit" class="btn btn-danger btn-user btn-cancel">
+                                                                    Delete
+                                                                    <i style="margin-left=" 50px" class="fas fa-trash-alt  "></i>
+                                                                </button>
 
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </form>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                        </form>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
+                        </div>
+
                     </div>
                 </div>
             </div>

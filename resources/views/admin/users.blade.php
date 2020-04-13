@@ -26,64 +26,68 @@
                 <div class="card-body">
                     <div class="clearfix">
                         <h4 class="card-title float-left">Users</h4>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
 
-                                    <th> Name </th>
-                                    <th> Email </th>
-                                    <th> Role </th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                                        <th> Name </th>
+                                        <th> Email </th>
+                                        <th> Role </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                @foreach ($users as $user)
-                                <tr>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email}}</td>
-                                    <td> <label class="badge badge-gradient-success text-uppercase">{{ $user->getRoleNames()[0] }}</label> </td>
+                                    @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email}}</td>
+                                        <td> <label class="badge badge-gradient-success text-uppercase">{{ $user->getRoleNames()[0] }}</label> </td>
 
 
-                                    <td><a href="/users/{{$user->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
-                                    </td>
-                                    <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{$user->id}}"><i class="mdi mdi-account-remove text-danger mdi-24px"></i></a>
-                                    </td>
-                                    <form method="POST" action="/users/ {{ $user->id }}">
-                                        {{ method_field('DELETE') }}
-                                        {{ csrf_field() }}
-                                        <!-- Modal to confirm deletion-->
-                                        <div class="modal fade" id="deleteModal-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">Confirm
-                                                            deletion
-                                                        </h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Are you sure you want to delete this user?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <div>
-                                                            <button type="submit" class="btn btn-danger btn-user btn-cancel">
-                                                                Delete
-                                                                <i style="margin-left=" 50px" class="fas fa-trash-alt  "></i>
+                                        <td><a href="/users/{{$user->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
+                                        </td>
+                                        <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{$user->id}}"><i class="mdi mdi-account-remove text-danger mdi-24px"></i></a>
+                                        </td>
+                                        <form method="POST" action="/users/ {{ $user->id }}">
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                            <!-- Modal to confirm deletion-->
+                                            <div class="modal fade" id="deleteModal-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Confirm
+                                                                deletion
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
                                                             </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Are you sure you want to delete this user?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <div>
+                                                                <button type="submit" class="btn btn-danger btn-user btn-cancel">
+                                                                    Delete
+                                                                    <i style="margin-left=" 50px" class="fas fa-trash-alt  "></i>
+                                                                </button>
 
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </form>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                        </form>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
+                        </div>
+
                     </div>
                 </div>
             </div>

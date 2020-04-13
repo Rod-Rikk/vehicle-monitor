@@ -12,17 +12,10 @@
     <div class="page-header">
         <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white mr-2">
-                <i class="mdi mdi-contacts"></i>
-            </span>Jobs </h3>
-        <nav aria-label="breadcrumb">
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>
-                    <a href="/create-job" class="btn btn-gradient-primary btn-md mdi mdi-database-plus mdi-24px"></a>
+                <i class="mdi mdi-clipboard-check"></i>
 
-                </li>
-            </ul>
-        </nav>
+            </span>Jobs </h3>
+     
     </div>
 
     <div class="row">
