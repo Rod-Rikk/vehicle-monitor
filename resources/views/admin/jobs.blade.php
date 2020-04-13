@@ -43,7 +43,7 @@
                 <h4 class="card-title">Records</h4>
                 <p class="card-description"> Current jobs
                 </p>
-                <table class="table table-striped">
+                <table class="table table-striped table-responsive">
                     <thead>
                         <tr>
 
