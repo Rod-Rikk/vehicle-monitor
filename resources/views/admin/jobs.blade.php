@@ -65,7 +65,7 @@
                             </td>
                             @endcan
                             <form method="POST" action="/jobs/ {{ $job->id }}">
-                                {{ method('DELETE') }}
+                                {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                                 <!-- Modal to confirm deletion-->
                                 <div class="modal fade" id="deleteModal-{{$job->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">

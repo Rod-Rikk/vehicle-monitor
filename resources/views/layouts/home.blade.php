@@ -23,7 +23,7 @@
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     <!-- Fonts -->
     <link rel="stylesheet" href="https://use.typekit.net/ins2wgm.css">
     {{-- <script src="https://kit.fontawesome.com/6116065486.js" crossorigin="anonymous"></script> --}}
@@ -55,6 +55,8 @@
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
                 </button>
+
+
                 <div class="search-field d-none d-md-block">
                     <form class="d-flex align-items-center h-100" action="#">
                         <div class="input-group">
@@ -229,13 +231,13 @@
     <script src="{{ asset('vendors/chart.js/Chart.min.js')}}"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="{{ asset('vendors/off-canvas.js')}}"></script>
-    <script src="{{ asset('vendors/hoverable-collapse.js')}}"></script>
-    <script src="{{ asset('vendors/misc.js')}}"></script>
+    <script src="{{ asset('vendors/js/off-canvas.js')}}"></script>
+    <script src="{{ asset('vendors/js/hoverable-collapse.js')}}"></script>
+    <script src="{{ asset('vendors/js/misc.js')}}"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="{{ asset('vendors/dashboard.js')}}"></script>
-    <script src="{{ asset('vendors/todolist.js')}}"></script>
+    <script src="{{ asset('vendors/js/dashboard.js')}}"></script>
+    <script src="{{ asset('vendors/js/todolist.js')}}"></script>
     <!-- End custom js for this page -->
 
     {{-- Bootstrap js --}}

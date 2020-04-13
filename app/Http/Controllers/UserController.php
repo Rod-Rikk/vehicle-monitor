@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Traits\HasRoles;
-use Spatie\Permission\Models\Role; 
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 
@@ -30,7 +30,7 @@ class UserController extends Controller
         //
         $users = User::latest()->get();
         $roles = Role::all();
-        return view('admin.users', compact('users','roles'));
+        return view('admin.users', compact('users', 'roles'));
     }
 
     /**
@@ -66,7 +66,7 @@ class UserController extends Controller
 
         $user->assignRole($request->role);
 
-        return redirect('/users')->with('success','User created successfully');
+        return redirect('/users')->with('success', 'User created successfully');
     }
 
     /**
@@ -79,7 +79,7 @@ class UserController extends Controller
     {
         //
         $user = User::findOrFail($user->id);
-        return view('admin.show-user',compact($user));
+        return view('admin.show-user', compact($user));
     }
 
     /**
@@ -98,7 +98,7 @@ class UserController extends Controller
         //dd($user_role);
         $roles = Role::all();
 
-        return view('admin.edit-user',compact('user_role'))->with([
+        return view('admin.edit-user', compact('user_role'))->with([
             'user' => $user,
             // 'user_role' => $user_role,
             'roles' => $roles
@@ -125,12 +125,12 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $user->assignRole($request->role);
         $user->update();
 
-        DB::table('model_has_roles')->where('model_id',$user)->delete();
-        $user->assignRole($request->input('roles'));
+        DB::table('model_has_roles')->where('model_id', $user)->delete();
 
-        return redirect('/users')->with('success','User updated successfully');
+        return redirect('/users')->with('success', 'User updated successfully');
     }
 
     /**
@@ -144,6 +144,6 @@ class UserController extends Controller
         //
         $user->delete();
 
-        return redirect('/users')->with('success','User deleted successfully');
+        return redirect('/users')->with('success', 'User deleted successfully');
     }
 }

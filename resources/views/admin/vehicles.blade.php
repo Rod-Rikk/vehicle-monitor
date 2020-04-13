@@ -131,9 +131,9 @@
                             <td>{{ $vehicle->cha_num}}</td>
                             <td>{{ $vehicle->model }}</td>
                             <td>{{ $vehicle->code }}</td>
-                            <td><a href="/vehicles/{{$vehicle->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px">Edit</i></a>
+                            <td><a href="/vehicles/{{$vehicle->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
                                 </button></td>
-                            <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal"><i class="mdi mdi-delete-variant text-danger mdi-24px">Delete</i></a>
+                            <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal"><i class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
                                 </button></td>
                             <form method="POST" action="/vehicles/ {{ $vehicle->id }}">
                                 {{ method_field('DELETE') }}

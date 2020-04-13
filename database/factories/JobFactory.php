@@ -10,7 +10,7 @@ $factory->define(Job::class, function (Faker $faker) {
     return [
         //
         'customer_id' => $faker->numberBetween(1, 10),
-        'description' => $faker->realText(),
+        'description' => $faker->word(),
         'vehicle_id' => $faker->numberBetween(1, 10),
         'location' => $faker->streetAddress,
         'job_done' => $faker->boolean(),
