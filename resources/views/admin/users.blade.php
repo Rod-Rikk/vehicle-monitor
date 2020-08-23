@@ -49,11 +49,13 @@
                                         </td>
                                         <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{$user->id}}"><i class="mdi mdi-account-remove text-danger mdi-24px"></i></a>
                                         </td>
-                                        <form method="POST" action="/users/ {{ $user->id }}">
-                                            {{ method_field('DELETE') }}
-                                            {{ csrf_field() }}
-                                            <!-- Modal to confirm deletion-->
-                                            <div class="modal fade" id="deleteModal-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+
+                                        <!-- Modal to confirm deletion-->
+                                        <div class="modal fade" id="deleteModal-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+                                            <form method="POST" action="/users/ {{ $user->id }}">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -79,7 +81,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                        </div>
                                         </form>
                                     </tr>
                                     @endforeach

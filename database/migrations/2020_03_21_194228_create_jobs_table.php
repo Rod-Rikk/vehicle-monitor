@@ -15,9 +15,15 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('customer_id')->references('id')->on('customers');
+            $table->unsignedBigInteger('customer_id');
+            $table->foreign('customer_id')
+                ->references('id')->on('customers')
+                ->onDelete('cascade');
             $table->text('description');
-            $table->unsignedBigInteger('vehicle_id')->references('id')->on('vehicles');
+            $table->unsignedBigInteger('vehicle_id');
+            $table->foreign('vehicle_id')
+                ->references('id')->on('vehicles')
+                ->onDelete('cascade');
             $table->string('location');
             $table->boolean('job_done');
             $table->dateTime('completed_on')->nullable();

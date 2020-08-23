@@ -55,11 +55,13 @@
                                         </td>
                                         <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{$role->id}}"><i class="mdi mdi-account-remove text-danger mdi-24px"></i></a>
                                         </td>
-                                        <form method="POST" action="/roles/ {{ $role->id }}">
-                                            {{ method_field('DELETE') }}
-                                            {{ csrf_field() }}
-                                            <!-- Modal to confirm deletion-->
-                                            <div class="modal fade" id="deleteModal-{{$role->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+
+                                        <!-- Modal to confirm deletion-->
+                                        <div class="modal fade" id="deleteModal-{{$role->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+                                            <form method="POST" action="/roles/ {{ $role->id }}">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -71,7 +73,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Are you sure you want to delete this user? {{$role->id}}
+                                                            Are you sure you want to delete this role?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -85,7 +87,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                        </div>
                                         </form>
                                     </tr>
                                     @endforeach
@@ -126,13 +128,15 @@
                         <div class="form-group">
                             <strong>Permission:</strong> <br><br>
                             @foreach ($permissions as $value)
-                            <label for="permission" class="form-check-label"> </label>
-                            <input type="checkbox" name="permission[]" class="form-check-input" value="{{ $value->id }}">
-                            {{$value->name}}
+                            <label for="permission" class="form-check-label">
+                                <input type="checkbox" name="permission[]" class="checkbox" value="{{ $value->id }}">
+                                {{$value->name}}
+                            </label>
                             <br> <br>
                             @endforeach
 
                         </div>
+
 
                 </div>
                 <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>

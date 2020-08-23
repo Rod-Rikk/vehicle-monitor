@@ -85,6 +85,7 @@ return array(
     'Collective\\Html\\HtmlBuilder' => $vendorDir . '/laravelcollective/html/src/HtmlBuilder.php',
     'Collective\\Html\\HtmlFacade' => $vendorDir . '/laravelcollective/html/src/HtmlFacade.php',
     'Collective\\Html\\HtmlServiceProvider' => $vendorDir . '/laravelcollective/html/src/HtmlServiceProvider.php',
+    'CompanySeeder' => $baseDir . '/database/seeds/CompanySeeder.php',
     'CreateAdminUserSeeder' => $baseDir . '/database/seeds/CreateAdminUserSeeder.php',
     'Cron\\AbstractField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',

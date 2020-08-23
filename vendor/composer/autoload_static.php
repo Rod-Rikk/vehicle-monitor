@@ -501,6 +501,7 @@ class ComposerStaticInit652e559b4b0ed61f2168fcae59770dec
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
+        'CompanySeeder' => __DIR__ . '/../..' . '/database/seeds/CompanySeeder.php',
         'CreateAdminUserSeeder' => __DIR__ . '/../..' . '/database/seeds/CreateAdminUserSeeder.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',

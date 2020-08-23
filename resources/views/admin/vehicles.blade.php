@@ -134,13 +134,16 @@
                                 <td>{{ $vehicle->code }}</td>
                                 <td><a href="/vehicles/{{$vehicle->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
                                     </button></td>
-                                <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal"><i class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
+                                <td><a class="btn btn-user btn-cancel" data-toggle="modal" data-target="#deleteModal-{{ $vehicle->id }}"><i class="mdi mdi-delete-variant text-danger mdi-24px"></i></a>
+
                                     </button></td>
-                                <form method="POST" action="/vehicles/ {{ $vehicle->id }}">
-                                    {{ method_field('DELETE') }}
-                                    {{ csrf_field() }}
-                                    <!-- Modal to confirm deletion-->
-                                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+
+                                <!-- Modal to confirm deletion-->
+                                <div class="modal fade" id="deleteModal-{{ $vehicle->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+                                    <form method="POST" action="/vehicles/ {{ $vehicle->id }}">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
+
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -164,7 +167,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                </div>
                                 </form>
                             </tr>
                             @endforeach
