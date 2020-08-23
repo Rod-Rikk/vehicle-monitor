@@ -56,7 +56,7 @@
                         <tbody>
                             @foreach ($jobs as $job)
                             <tr>
-                                @if(isset(@job->customer->name))
+                                @if(isset($job->customer->name))
                                 <td>{{$job->customer->name }}</td>
                                 @else
                                 <td>Empty/deleted record</td>
