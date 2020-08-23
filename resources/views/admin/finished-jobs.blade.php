@@ -45,9 +45,17 @@
                             <tr>
                                 @if (isset($job->customer->name))
                                 <td>{{$job->customer->name }}</td>
+                                @else
+                                <td>Empty/deleted record</td>
 
                                 @endif
+
+                                @if ( isset($job->vehicle->code))
                                 <td>{{ $job->vehicle->code }}</td>
+                                @else
+                                <td>Empty/deleted record</td>
+
+                                @endif
                                 <td>{{ $job->completed_on->diffForHumans()}}</td>
                                 <td><a href="/finished-jobs/{{$job->id}}" class="btn btn-user btn-cancel"><i class="mdi mdi-eye text-warning mdi-24px"></i></a>
                                 </td>

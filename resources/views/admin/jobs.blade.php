@@ -56,9 +56,21 @@
                         <tbody>
                             @foreach ($jobs as $job)
                             <tr>
+                                @if(isset(@job->customer->name))
                                 <td>{{$job->customer->name }}</td>
+                                @else
+                                <td>Empty/deleted record</td>
+                                @endif
+
                                 <td>{{ $job->description }}</td>
+
+                                @if (isset($job->vehicle->code))
                                 <td>{{ $job->vehicle->code}}</td>
+
+                                @else
+                                <td>Empty/deleted record</td>
+
+                                @endif
                                 <td><a href="/jobs/{{$job->id}}/edit" class="btn btn-user btn-cancel"><i class="mdi mdi-tooltip-edit text-warning mdi-24px"></i></a>
                                 </td>
                                 @can('job-delete')
