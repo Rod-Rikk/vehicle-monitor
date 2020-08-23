@@ -72,8 +72,20 @@
                                 <tbody>
                                     @foreach($recent_jobs as $job)
                                     <tr>
+                                        @if (isset($job->customer->name))
                                         <td> {{$job->customer->name}} </td>
+                                        @else
+                                        <td>Empty/deleted record</td>
+
+                                        @endif
+
+                                        @if (isset($job->vehicle->model))
                                         <td> {{$job->vehicle->model}} </td>
+                                        @else
+                                        <td>Empty/deleted record</td>
+
+                                        @endif
+
                                         <td> {{$job->completed_on->diffForHumans() }} </td>
                                         <td>
                                             <div class="progress">

@@ -54,7 +54,7 @@
 
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{$job->customer->name}}
                                             @else
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Empty record
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Empty/deleted record
 
                                                 @endif
 
@@ -73,190 +73,196 @@
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">VEHICLE
                                                 NO.PLATE
                                             </div>
+
+                                            @if (isset($job->vehicle->num_plate))
+
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{$job->vehicle->num_plate}}
+                                                @else
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">Empty/deleted record
 
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-4">
-                                    <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <i style="margin-right: 10px" class="mdi mdi-map-marker-radius mdi-24px"></i>
-                                        </div>
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">JOB LOCATION
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$job->location}}
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{-- Second Row of Info --}}
-
-                            <div class="no-gutters row" style="margin-top:10%">
-                                <div class="col-sm-6 col-md-4 col-xl-4">
-                                    <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <i style="margin-right: 10px" class="mdi mdi-calendar-plus mdi-24px"></i>
-                                        </div>
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">START DATE
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                {{$job->start_date->toFormattedDateString()}}
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-4">
-                                    <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <i style="margin-right: 10px" class="mdi mdi-calendar-remove mdi-24px"></i>
-                                        </div>
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">END DATE
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                {{$job->end_date->toFormattedDateString()}}
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-4">
-                                    @if ($status == 'upcoming')
-                                    <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <i style="margin-right: 10px" class="mdi mdi-alarm-check mdi-24px"></i>
-                                        </div>
-
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">JOB ONGOING
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> Deadline is:
-                                                {{$job->end_date->diffForHumans()}}
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    @endif
-
-
-                                    @if ($status == 'current')
-                                    <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <i style="margin-right: 10px" class="mdi mdi-alarm mdi-24px"></i>
-                                        </div>
-
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">JOB END
-                                                DATE IS TODAY...
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> Deadline is:
-                                                {{$job->end_date->diffForHumans()}}
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    @endif
-
-
-                                    @if ($status == 'past')
-                                    <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <i style="margin-right: 10px" class="mdi mdi-alarm-off mdi-24px"></i>
-                                        </div>
-
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">JOB END
-                                                DATE IS OVERDUE!
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> Job deadline was:
-                                                {{$job->end_date->diffForHumans()}}
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    @endif
-                                </div>
-                            </div>
-
-                            {{-- Third Row of Info --}}
-                            <div class="no-gutters row" style="margin-top:10%">
-                                <div class="col-sm-6 col-md-6 col-xl-6">
-                                    <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <i style="margin-right: 10px" class="mdi mdi-comment-question-outline mdi-24px"></i>
-                                        </div>
-                                        <div class="col mr-4">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">JOB
-                                                DESCRIPTION
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$job->description}}
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-xl-6">
-                                    <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <i style="margin-right: 10px" class="mdi mdi-carmdi mdi-comment-check mdi-24px"></i>
-                                        </div>
-                                        <div class="col mr-4">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">JOB REMARKS
-                                                ON COMPLETION
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$job->remarks}}
-                                                @if ($job->remarks == '')
-                                                <div class="h5 font-weight-light text-secondary-800">
-                                                    <p>No remarks attached to this job.</p>
+                                                    @endif
                                                 </div>
-                                                @endif
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-xl-4">
+                                        <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i style="margin-right: 10px" class="mdi mdi-map-marker-radius mdi-24px"></i>
+                                            </div>
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">JOB LOCATION
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$job->location}}
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Second Row of Info --}}
+
+                                <div class="no-gutters row" style="margin-top:10%">
+                                    <div class="col-sm-6 col-md-4 col-xl-4">
+                                        <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i style="margin-right: 10px" class="mdi mdi-calendar-plus mdi-24px"></i>
+                                            </div>
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">START DATE
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                    {{$job->start_date->toFormattedDateString()}}
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-xl-4">
+                                        <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i style="margin-right: 10px" class="mdi mdi-calendar-remove mdi-24px"></i>
+                                            </div>
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">END DATE
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                    {{$job->end_date->toFormattedDateString()}}
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-4 col-xl-4">
+                                        @if ($status == 'upcoming')
+                                        <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i style="margin-right: 10px" class="mdi mdi-alarm-check mdi-24px"></i>
+                                            </div>
+
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">JOB ONGOING
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"> Deadline is:
+                                                    {{$job->end_date->diffForHumans()}}
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        @endif
+
+
+                                        @if ($status == 'current')
+                                        <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i style="margin-right: 10px" class="mdi mdi-alarm mdi-24px"></i>
+                                            </div>
+
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">JOB END
+                                                    DATE IS TODAY...
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"> Deadline is:
+                                                    {{$job->end_date->diffForHumans()}}
+
+                                                </div>
+
                                             </div>
 
                                         </div>
 
+                                        @endif
+
+
+                                        @if ($status == 'past')
+                                        <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i style="margin-right: 10px" class="mdi mdi-alarm-off mdi-24px"></i>
+                                            </div>
+
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">JOB END
+                                                    DATE IS OVERDUE!
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"> Job deadline was:
+                                                    {{$job->end_date->diffForHumans()}}
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
 
+                                {{-- Third Row of Info --}}
+                                <div class="no-gutters row" style="margin-top:10%">
+                                    <div class="col-sm-6 col-md-6 col-xl-6">
+                                        <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i style="margin-right: 10px" class="mdi mdi-comment-question-outline mdi-24px"></i>
+                                            </div>
+                                            <div class="col mr-4">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">JOB
+                                                    DESCRIPTION
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$job->description}}
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-xl-6">
+                                        <div style="margin-bottom: 10px" class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <i style="margin-right: 10px" class="mdi mdi-carmdi mdi-comment-check mdi-24px"></i>
+                                            </div>
+                                            <div class="col mr-4">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">JOB REMARKS
+                                                    ON COMPLETION
+                                                </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$job->remarks}}
+                                                    @if ($job->remarks == '')
+                                                    <div class="h5 font-weight-light text-secondary-800">
+                                                        <p>No remarks attached to this job.</p>
+                                                    </div>
+                                                    @endif
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="h5 font-weight-light text-success">This job was completed: </div>
+                                    <div class="h5 font-weight-bold text-success" style="margin-right:10px">
+                                        {{$job->completed_on->diffForHumans()}}</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="h5 font-weight-light text-success">This job was completed: </div>
-                                <div class="h5 font-weight-bold text-success" style="margin-right:10px">
-                                    {{$job->completed_on->diffForHumans()}}</div>
-                            </div>
-                        </div>
+
                     </div>
 
+
                 </div>
-
-
-            </div>
     </body>
 
 
